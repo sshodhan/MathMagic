@@ -274,6 +274,11 @@
             height: 26px;
         }
 
+        /* Mobile menu - hidden by default on desktop */
+        .nav-mobile-menu {
+            display: none;
+        }
+
         /* ---------- HERO ---------- */
         .hero {
             padding: 160px 0 120px;
@@ -952,7 +957,75 @@
         .beta-link:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
         .beta-link .btn-icon { font-size: 1.4rem; }
 
+        .beta-link-secondary {
+            background: white;
+            color: var(--teal);
+            border: none;
+        }
+
+        .beta-link-secondary:hover {
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .beta-form-note {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+        }
+
+        .beta-steps {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin: 32px 0;
+            flex-wrap: wrap;
+        }
+
+        .beta-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .beta-step-num {
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
         .beta-note { margin-top: 20px; font-size: 0.88rem; color: rgba(255,255,255,0.65); font-weight: 600; }
+
+        .beta-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .beta-divider::before,
+        .beta-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+            max-width: 120px;
+        }
 
         .beta-features { display: flex; gap: 28px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
 
@@ -981,6 +1054,37 @@
         .download .section-title { color: white; }
 
         .download-sub { color: rgba(255,255,255,0.65); margin-bottom: 36px; font-weight: 500; font-size: 1.05rem; }
+
+        .download-steps {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .download-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .download-step-num {
+            width: 28px;
+            height: 28px;
+            background: var(--orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
 
         .store-badge-link {
             display: inline-flex;
@@ -1087,6 +1191,8 @@
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
             .beta-features { flex-direction: column; align-items: center; gap: 14px; }
+            .beta-steps { flex-direction: column; gap: 16px; }
+            .download-steps { flex-direction: column; align-items: center; gap: 16px; }
         }
     </style>
 </head>
@@ -1138,8 +1244,8 @@
                 </h1>
                 <p class="hero-desc reveal reveal-delay-2">Interactive games, an AI math coach, and visual learning tools that turn math practice into a real adventure.</p>
                 <div class="hero-buttons reveal reveal-delay-3">
-                    <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="btn btn-primary">
-                        <span class="btn-icon" aria-hidden="true">▶️</span> Download Beta
+                    <a href="#beta" class="btn btn-primary">
+                        <span class="btn-icon" aria-hidden="true">🧪</span> Join Beta
                     </a>
                     <a href="#features" class="btn btn-secondary">See How It Works</a>
                 </div>
@@ -1302,13 +1408,40 @@
             <div class="beta-inner">
                 <div class="beta-icon reveal" aria-hidden="true">🧪</div>
                 <h2 class="section-title reveal reveal-delay-1" id="beta-title">Join the Beta</h2>
-                <p class="beta-desc reveal reveal-delay-2">Be among the first to try Math Magic. Help us shape the future of math learning for kids — your feedback matters.</p>
+                <p class="beta-desc reveal reveal-delay-2">Be among the first to try Math Magic! Send us your Gmail address and we'll add you to our Android tester list.</p>
+                
                 <div class="reveal reveal-delay-3">
-                    <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="beta-link">
-                        <span class="btn-icon" aria-hidden="true">🎮</span> Join Beta Testing
+                    <a href="/cdn-cgi/l/email-protection#12616762627d6066527f73667a7f73757b7174677c3c717d7f2d616770787771662f5f73667a3720225f73757b71372022507766733720224077636777616634707d766b2f5a7b33372022427e777361773720227376763720227f77372022667d372022667a773720225f73667a3720225f73757b71372022707766733720226677616677603720227e7b61663c3722533722535f6b372022557f737b7e37202273767660776161372153372022" class="beta-link">
+                        <span class="btn-icon" aria-hidden="true">📧</span> Email Us to Join
                     </a>
                 </div>
-                <p class="beta-note reveal reveal-delay-4">Available for Android devices · Free to join</p>
+                <p class="beta-form-note reveal reveal-delay-3">Send your Gmail address to get added to the tester list</p>
+
+                <div class="beta-steps reveal reveal-delay-3">
+                    <div class="beta-step">
+                        <span class="beta-step-num">1</span>
+                        <span>Email us your Gmail</span>
+                    </div>
+                    <div class="beta-step">
+                        <span class="beta-step-num">2</span>
+                        <span>We add you to testers</span>
+                    </div>
+                    <div class="beta-step">
+                        <span class="beta-step-num">3</span>
+                        <span>Download from Play Store</span>
+                    </div>
+                </div>
+
+                <div class="beta-divider reveal reveal-delay-4">
+                    <span>Already approved?</span>
+                </div>
+
+                <div class="reveal reveal-delay-4">
+                    <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="beta-link beta-link-secondary">
+                        <span class="btn-icon" aria-hidden="true">🎮</span> Download Beta
+                    </a>
+                </div>
+                <p class="beta-note reveal reveal-delay-5">Available for Android devices · Requires Gmail approval first</p>
                 <div class="beta-features reveal reveal-delay-5">
                     <div class="beta-feature"><span class="beta-feature-check" aria-hidden="true">✓</span> Early access to features</div>
                     <div class="beta-feature"><span class="beta-feature-check" aria-hidden="true">✓</span> Direct line to the developer</div>
@@ -1321,12 +1454,26 @@
     <!-- Download -->
     <section class="download section" id="download" aria-labelledby="download-title">
         <div class="container">
-            <h2 class="section-title reveal" id="download-title">Download Math Magic</h2>
-            <p class="download-sub reveal reveal-delay-1">Start your child's math adventure — completely free.</p>
-            <div class="reveal reveal-delay-2">
-                <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="store-badge-link" aria-label="Get Math Magic on Google Play">
-                    <span class="store-icon" aria-hidden="true">▶️</span>
-                    <div class="store-text"><small>GET IT ON</small><strong>Google Play</strong></div>
+            <h2 class="section-title reveal" id="download-title">Get Math Magic</h2>
+            <p class="download-sub reveal reveal-delay-1">Currently in beta for Android. Request access above to get started!</p>
+            <div class="reveal reveal-delay-2 download-steps">
+                <div class="download-step">
+                    <span class="download-step-num">1</span>
+                    <span>Submit your Gmail above</span>
+                </div>
+                <div class="download-step">
+                    <span class="download-step-num">2</span>
+                    <span>We'll add you to the tester list</span>
+                </div>
+                <div class="download-step">
+                    <span class="download-step-num">3</span>
+                    <span>Download from Google Play</span>
+                </div>
+            </div>
+            <div class="reveal reveal-delay-3" style="margin-top: 32px;">
+                <a href="#beta" class="store-badge-link" aria-label="Join the beta">
+                    <span class="store-icon" aria-hidden="true">🧪</span>
+                    <div class="store-text"><small>JOIN THE</small><strong>Beta Program</strong></div>
                 </a>
             </div>
         </div>
@@ -1352,7 +1499,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Make all reveals visible immediately for better compatibility
         document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 
@@ -1375,12 +1522,4 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Close mobile menu on ESC
-        document.addEventListener('keydow
+              
