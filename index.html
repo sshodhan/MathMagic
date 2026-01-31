@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Magic — Fun Math Learning for Kids</title>
+    <meta name="description" content="Math Magic makes learning math fun! Interactive games with an AI math coach, visual learning tools, and a safe environment designed for children ages 6-12.">
+    <meta name="theme-color" content="#FF6B35">
+    <meta property="og:title" content="Math Magic — Fun Math Learning for Kids">
+    <meta property="og:description" content="Interactive math games that turn practice into an adventure. AI-powered coaching, visual learning, and rewards that keep kids engaged.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --orange-light: #FF8F5E;
+            --orange-glow: rgba(255, 107, 53, 0.15);
+            --teal: #1DB5A0;
+            --teal-light: #5FD4C4;
+            --purple: #7B61FF;
+            --purple-light: #A18AFF;
+            --pink: #FF5E8A;
+            --yellow: #FFD23F;
+            --yellow-warm: #FFC107;
+            --cream: #FFFBF5;
+            --cream-dark: #FFF5EB;
+            --ink: #2D2235;
+            --ink-light: #4A4158;
+            --ink-muted: #7E7591;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --radius-xl: 48px;
+            --shadow-card: 0 4px 24px rgba(45, 34, 53, 0.07);
+            --shadow-card-hover: 0 12px 40px rgba(45, 34, 53, 0.12);
+            --shadow-float: 0 20px 60px rgba(45, 34, 53, 0.15);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Baloo 2', cursive;
+            line-height: 1.2;
+        }
+
+        .handwritten {
+            font-family: 'Caveat', cursive;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ---------- REUSABLE ---------- */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--ink-muted);
+            max-width: 560px;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(0.99);
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--ink);
+            box-shadow: var(--shadow-card);
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        /* ---------- SCROLL REVEAL ---------- */
+        .reveal {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .js-enabled .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+        }
+
+        .js-enabled .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ---------- NAV ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 251, 245, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 2px 20px rgba(45, 34, 53, 0.06);
+            padding: 10px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(123, 97, 255, 0.3);
+        }
+
+        .nav-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-cta {
+            padding: 10px 22px !important;
+            font-size: 0.95rem !important;
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--ink);
+        }
+
+        .nav-mobile-toggle svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+            background: var(--cream);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange-glow);
+            color: var(--orange);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            border: 1.5px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.6rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+
+        .hero-title .accent {
+            color: var(--orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .accent::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--yellow);
+            border-radius: 4px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--ink-muted);
+            margin-bottom: 36px;
+            max-width: 460px;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-social-proof {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 36px;
+        }
+
+        .hero-avatars {
+            display: flex;
+        }
+
+        .hero-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+            margin-left: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .hero-avatar:first-child { margin-left: 0; background: #FFE0CC; }
+        .hero-avatar:nth-child(2) { background: #D4F0EB; }
+        .hero-avatar:nth-child(3) { background: #E0DAFF; }
+        .hero-avatar:nth-child(4) { background: #FFD6E3; }
+
+        .hero-social-text {
+            font-size: 0.88rem;
+            color: var(--ink-muted);
+            font-weight: 600;
+        }
+
+        .hero-social-text strong {
+            color: var(--ink);
+        }
+
+        /* Hero visual side */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-phone {
+            width: 280px;
+            height: 560px;
+            background: var(--ink);
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: var(--shadow-float);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .hero-phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 34px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .hero-phone-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 24px;
+            background: var(--ink);
+            border-radius: 0 0 14px 14px;
+            z-index: 10;
+        }
+
+        .hero-mascot {
+            position: absolute;
+            right: -60px;
+            bottom: 80px;
+            width: 160px;
+            height: 160px;
+            z-index: 3;
+            animation: mascot-bounce 3s ease-in-out infinite;
+            filter: drop-shadow(0 12px 24px rgba(123, 97, 255, 0.25));
+        }
+
+        .hero-mascot img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes mascot-bounce {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+        }
+
+        /* Floating math symbols */
+        .hero-floaters {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floater {
+            position: absolute;
+            font-size: 2.2rem;
+            opacity: 0.12;
+            animation: floater-drift 8s ease-in-out infinite;
+            font-weight: 800;
+        }
+
+        .floater:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; color: var(--orange); }
+        .floater:nth-child(2) { top: 25%; right: 8%; animation-delay: 1.5s; color: var(--teal); font-size: 2.8rem; }
+        .floater:nth-child(3) { bottom: 20%; left: 10%; animation-delay: 3s; color: var(--purple); }
+        .floater:nth-child(4) { top: 60%; right: 3%; animation-delay: 0.8s; color: var(--pink); font-size: 1.8rem; }
+        .floater:nth-child(5) { bottom: 10%; right: 15%; animation-delay: 2.2s; color: var(--yellow-warm); font-size: 3rem; }
+        .floater:nth-child(6) { top: 5%; right: 30%; animation-delay: 4s; color: var(--teal); font-size: 1.6rem; }
+
+        @keyframes floater-drift {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(5deg); }
+            66% { transform: translateY(8px) rotate(-3deg); }
+        }
+
+        /* ---------- FEATURES ---------- */
+        .features {
+            background: white;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to bottom, var(--cream), white);
+            pointer-events: none;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-header .section-label { color: var(--teal); }
+        .features-header .section-subtitle { margin: 0 auto; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-card:nth-child(1)::before { background: var(--orange); }
+        .feature-card:nth-child(2)::before { background: var(--purple); }
+        .feature-card:nth-child(3)::before { background: var(--teal); }
+        .feature-card:nth-child(4)::before { background: var(--pink); }
+        .feature-card:nth-child(5)::before { background: var(--yellow-warm); }
+        .feature-card:nth-child(6)::before { background: var(--purple); }
+
+        .feature-icon-wrap {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon-wrap { background: rgba(255, 107, 53, 0.12); }
+        .feature-card:nth-child(2) .feature-icon-wrap { background: rgba(123, 97, 255, 0.12); }
+        .feature-card:nth-child(3) .feature-icon-wrap { background: rgba(29, 181, 160, 0.12); }
+        .feature-card:nth-child(4) .feature-icon-wrap { background: rgba(255, 94, 138, 0.12); }
+        .feature-card:nth-child(5) .feature-icon-wrap { background: rgba(255, 193, 7, 0.15); }
+        .feature-card:nth-child(6) .feature-icon-wrap { background: rgba(123, 97, 255, 0.12); }
+
+        .feature-icon-wrap.mascot-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #E8E0FF 0%, #F5F0FF 100%) !important;
+            border-radius: 20px;
+            padding: 8px;
+        }
+
+        .feature-icon-wrap.mascot-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .feature-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { color: var(--ink-muted); font-size: 0.95rem; font-weight: 500; line-height: 1.6; }
+
+        /* ---------- SCREENSHOTS ---------- */
+        .app-preview {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8F5E 30%, #FFD23F 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .app-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+        }
+
+        .app-preview-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-preview-header .section-label { color: rgba(255,255,255,0.8); }
+        .app-preview-header .section-title { color: white; }
+        .app-preview-header .section-subtitle { color: rgba(255,255,255,0.85); margin: 0 auto; }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .screenshot-card {
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .screenshot-card:hover { transform: scale(1.05) translateY(-8px); }
+
+        .screenshot-frame {
+            width: 200px;
+            height: 400px;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(45, 34, 53, 0.25);
+            overflow: hidden;
+        }
+
+        .screenshot-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .screenshot-card .caption { margin-top: 16px; font-weight: 700; color: white; font-size: 0.95rem; text-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+
+        /* ---------- FOR PARENTS ---------- */
+        .parents { background: var(--cream); }
+
+        .parents-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .parents-content .section-label { color: var(--pink); }
+
+        .parents-list {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-top: 36px;
+        }
+
+        .parents-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .parents-item-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .parents-item:nth-child(1) .parents-item-icon { background: rgba(255, 94, 138, 0.1); }
+        .parents-item:nth-child(2) .parents-item-icon { background: rgba(29, 181, 160, 0.1); }
+        .parents-item:nth-child(3) .parents-item-icon { background: rgba(255, 107, 53, 0.1); }
+        .parents-item:nth-child(4) .parents-item-icon { background: rgba(123, 97, 255, 0.1); }
+
+        .parents-item h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+        .parents-item p { color: var(--ink-muted); font-size: 0.93rem; font-weight: 500; }
+
+        .parents-visual { display: flex; align-items: center; justify-content: center; }
+
+        .trust-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            box-shadow: var(--shadow-float);
+            text-align: center;
+            max-width: 380px;
+            position: relative;
+        }
+
+        .trust-card::before {
+            content: '';
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            background: linear-gradient(135deg, var(--pink), var(--purple), var(--teal));
+            border-radius: 35px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .trust-shield { font-size: 3.5rem; margin-bottom: 20px; }
+        .trust-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
+        .trust-card p { color: var(--ink-muted); font-weight: 500; font-size: 0.95rem; margin-bottom: 24px; }
+
+        .trust-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+        .trust-badge {
+            background: var(--cream);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ink-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ---------- STORY ---------- */
+        .story { background: white; }
+
+        .story-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+        .story .section-label { color: var(--purple); }
+
+        .story-text {
+            font-size: 1.15rem;
+            color: var(--ink-light);
+            margin-bottom: 24px;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .story-quote {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--orange);
+            margin: 48px 0;
+            padding: 28px 36px;
+            background: var(--orange-glow);
+            border-radius: var(--radius-md);
+            border-left: 5px solid var(--orange);
+            text-align: left;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        /* ---------- EXPERIMENT ---------- */
+        .experiment { background: var(--cream-dark); }
+        .experiment .section-label { color: var(--teal); }
+
+        .experiment-inner { max-width: 800px; margin: 0 auto; }
+
+        .experiment-lead {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4rem;
+            color: var(--teal);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .experiment-text {
+            font-size: 1.1rem;
+            color: var(--ink-light);
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+
+        .topic-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+
+        .topic-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: var(--cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topic-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+        .topic-card p { font-size: 0.85rem; color: var(--ink-muted); font-weight: 500; line-height: 1.5; }
+
+        .experiment-closing {
+            text-align: center;
+            margin-top: 36px;
+            font-size: 1.05rem;
+            color: var(--ink-light);
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        /* ---------- WHY IT MATTERS ---------- */
+        .why-matters {
+            background: var(--ink);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-matters::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(123, 97, 255, 0.12) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 30%, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .why-matters-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+        .why-matters .section-label { color: var(--yellow); }
+        .why-matters .section-title { color: white; }
+
+        .why-text {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .why-quote {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+            color: var(--yellow);
+            margin: 48px 0;
+            padding: 28px 36px;
+            background: rgba(255, 210, 63, 0.08);
+            border-radius: var(--radius-md);
+            border-left: 5px solid var(--yellow);
+            text-align: left;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        /* ---------- ROADMAP ---------- */
+        .roadmap { background: white; }
+        .roadmap-header { text-align: center; margin-bottom: 50px; }
+        .roadmap-header .section-label { color: var(--orange); }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .roadmap-item {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: 28px 20px;
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid transparent;
+        }
+
+        .roadmap-item:hover { transform: translateY(-4px) scale(1.02); border-color: rgba(255, 107, 53, 0.2); }
+        .roadmap-emoji { font-size: 2.2rem; margin-bottom: 12px; }
+        .roadmap-item p { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 1rem; color: var(--ink); }
+
+        /* ---------- BETA CTA ---------- */
+        .beta {
+            background: linear-gradient(135deg, #1DB5A0 0%, #14917F 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .beta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20l2.83-2.83 1.41 1.41L1.41 21.41 0 20zm0-18.59L2.83.59 4.24 2 1.41 4.83 0 3.41V1.41zM20 18.59l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59zM40 20l-2.83 2.83-1.41-1.41L38.59 20l-2.83-2.83 1.41-1.41L40 18.59V20z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+        }
+
+        .beta-inner { text-align: center; position: relative; z-index: 1; }
+        .beta-icon { font-size: 3rem; margin-bottom: 20px; }
+        .beta .section-title { color: white; }
+
+        .beta-desc {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 520px;
+            margin: 0 auto 32px;
+            font-weight: 500;
+        }
+
+        .beta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--teal);
+            padding: 18px 36px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.15rem;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+        }
+
+        .beta-link:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+        .beta-link .btn-icon { font-size: 1.4rem; }
+
+        .beta-note { margin-top: 20px; font-size: 0.88rem; color: rgba(255,255,255,0.65); font-weight: 600; }
+
+        .beta-features { display: flex; gap: 28px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
+
+        .beta-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .beta-feature-check {
+            width: 22px;
+            height: 22px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        /* ---------- DOWNLOAD ---------- */
+        .download { background: var(--ink); color: white; text-align: center; }
+        .download .section-title { color: white; }
+
+        .download-sub { color: rgba(255,255,255,0.65); margin-bottom: 36px; font-weight: 500; font-size: 1.05rem; }
+
+        .store-badge-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.08);
+            border: 1.5px solid rgba(255,255,255,0.15);
+            color: white;
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .store-badge-link:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+        .store-icon { font-size: 2rem; }
+        .store-text { text-align: left; }
+        .store-text small { font-size: 0.7rem; opacity: 0.7; display: block; font-weight: 600; }
+        .store-text strong { font-family: 'Baloo 2', cursive; font-size: 1.2rem; }
+
+        /* ---------- FOOTER ---------- */
+        .footer { background: #0D0B14; color: white; padding: 48px 0 36px; }
+
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+
+        .footer-brand { display: flex; align-items: center; gap: 10px; }
+
+        .footer-logo-icon {
+            width: 32px; height: 32px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .footer-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-brand-name { font-family: 'Baloo 2', cursive; font-size: 1.15rem; font-weight: 700; }
+
+        .footer-links { display: flex; gap: 28px; list-style: none; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: white; }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.35);
+            font-weight: 500;
+        }
+
+        /* ---------- ACCESSIBILITY ---------- */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+        :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 48px; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-social-proof { justify-content: center; }
+            .hero-phone { width: 240px; height: 480px; }
+            .hero-mascot { right: -40px; bottom: 60px; width: 120px; height: 120px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .parents-grid { grid-template-columns: 1fr; gap: 48px; }
+            .parents-visual { order: -1; }
+            .topics-grid { grid-template-columns: 1fr; }
+            .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            .section { padding: 72px 0; }
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+
+            .nav-mobile-menu {
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(255, 251, 245, 0.98);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                z-index: 200;
+                display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+                opacity: 0; pointer-events: none; transition: opacity 0.3s;
+            }
+
+            .nav-mobile-menu.open { opacity: 1; pointer-events: all; }
+            .nav-mobile-menu a { font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+
+            .nav-mobile-close {
+                position: absolute; top: 20px; right: 24px;
+                background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--ink); padding: 8px;
+            }
+
+            .hero { padding: 130px 0 80px; }
+            .hero-title { font-size: 2.4rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .screenshots-scroll { gap: 16px; }
+            .screenshot-frame { width: 140px; height: 280px; }
+            .hero-mascot { right: -20px; bottom: 40px; width: 100px; height: 100px; }
+            .roadmap-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+            .beta-features { flex-direction: column; align-items: center; gap: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo" aria-label="Math Magic home">
+                <div class="nav-logo-icon"><img src="images/icon.png" alt=""></div>
+                Math Magic
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#parents">Parents</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="#beta" class="btn btn-primary nav-cta">Join Beta</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+        <button class="nav-mobile-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+        <a href="#features" onclick="document.getElementById('mobileMenu').classList.remove('open')">Features</a>
+        <a href="#parents" onclick="document.getElementById('mobileMenu').classList.remove('open')">Parents</a>
+        <a href="#story" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Story</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="#beta" class="btn btn-primary" onclick="document.getElementById('mobileMenu').classList.remove('open')">Join Beta</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-floaters" aria-hidden="true">
+            <span class="floater">+</span><span class="floater">÷</span><span class="floater">×</span>
+            <span class="floater">=</span><span class="floater">π</span><span class="floater">%</span>
+        </div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <span class="hero-badge-dot" aria-hidden="true"></span> Now in Beta — Android
+                </div>
+                <h1 class="hero-title reveal reveal-delay-1" id="hero-title">
+                    Math becomes <span class="accent">magic</span> when kids can see it
+                </h1>
+                <p class="hero-desc reveal reveal-delay-2">Interactive games, an AI math coach, and visual learning tools that turn math practice into a real adventure.</p>
+                <div class="hero-buttons reveal reveal-delay-3">
+                    <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="btn btn-primary">
+                        <span class="btn-icon" aria-hidden="true">▶️</span> Download Beta
+                    </a>
+                    <a href="#features" class="btn btn-secondary">See How It Works</a>
+                </div>
+                <div class="hero-social-proof reveal reveal-delay-4">
+                    <div class="hero-avatars" aria-hidden="true">
+                        <div class="hero-avatar">👧</div><div class="hero-avatar">👦</div>
+                        <div class="hero-avatar">👩</div><div class="hero-avatar">🧒</div>
+                    </div>
+                    <p class="hero-social-text">Join <strong>early testers</strong> trying Math Magic</p>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-delay-2">
+                <div class="hero-phone">
+                    <div class="hero-phone-screen">
+                        <img src="images/MathMajicMainScreen.png" alt="Math Magic app main screen showing Number Sense, Long Division, Decimals, and Fractions modules">
+                    </div>
+                </div>
+                <div class="hero-mascot">
+                    <img src="images/funmascot.png" alt="Cute hexagon mascot holding a plus sign">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features section" id="features" aria-labelledby="features-title">
+        <div class="container">
+            <div class="features-header">
+                <div class="section-label reveal">WHY KIDS LOVE IT</div>
+                <h2 class="section-title reveal reveal-delay-1" id="features-title">Learning that feels like play</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Every feature is designed to make math click — through visuals, adventure, and gentle encouragement.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal"><div class="feature-icon-wrap mascot-icon"><img src="images/funmascot.png" alt="Math Magic mascot"></div><h3>AI Math Coach</h3><p>A personal tutor that gives step-by-step guidance, hints, and encouragement in kid-friendly language.</p></div>
+                <div class="feature-card reveal reveal-delay-1"><div class="feature-icon-wrap" aria-hidden="true">👤</div><h3>Dream Avatars</h3><p>Kids create and customize their own unique character that grows and levels up as they learn.</p></div>
+                <div class="feature-card reveal reveal-delay-2"><div class="feature-icon-wrap" aria-hidden="true">🍕</div><h3>Visual Learning</h3><p>Fractions become pizza slices, decimals become colored grids — concepts you can see and touch.</p></div>
+                <div class="feature-card reveal reveal-delay-3"><div class="feature-icon-wrap" aria-hidden="true">🏆</div><h3>Adventures &amp; Rewards</h3><p>Unlock puzzles, collect styles, and celebrate every achievement along the way.</p></div>
+                <div class="feature-card reveal reveal-delay-4"><div class="feature-icon-wrap" aria-hidden="true">🔢</div><h3>All Math Topics</h3><p>Number sense, fractions, decimals, long division — core skills covered with depth and care.</p></div>
+                <div class="feature-card reveal reveal-delay-5"><div class="feature-icon-wrap" aria-hidden="true">⭐</div><h3>Earn Stars</h3><p>Collect stars as you master skills, unlock achievements, and build confidence with every problem.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview -->
+    <section class="app-preview section" id="screenshots" aria-labelledby="preview-title">
+        <div class="container">
+            <div class="app-preview-header">
+                <div class="section-label reveal">APP PREVIEW</div>
+                <h2 class="section-title reveal reveal-delay-1" id="preview-title">See Math Magic in action</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Five screens, one goal: make math feel like an adventure worth coming back to.</p>
+            </div>
+            <div class="screenshots-scroll">
+                <div class="screenshot-card reveal"><div class="screenshot-frame"><img src="images/MathMajicMainScreen.png" alt="Math Magic main screen with learning modules"></div><p class="caption">Home Dashboard</p></div>
+                <div class="screenshot-card reveal reveal-delay-1"><div class="screenshot-frame"><img src="images/AdventureFeed.png" alt="Adventure Feed showing achievements and avatar updates"></div><p class="caption">Adventure Feed</p></div>
+                <div class="screenshot-card reveal reveal-delay-2"><div class="screenshot-frame"><img src="images/Avtar.png" alt="Dream Avatar customization screen"></div><p class="caption">Dream Avatar</p></div>
+                <div class="screenshot-card reveal reveal-delay-3"><div class="screenshot-frame"><img src="images/coach.png" alt="AI Math Coach with decimal problems"></div><p class="caption">AI Math Coach</p></div>
+                <div class="screenshot-card reveal reveal-delay-4"><div class="screenshot-frame"><img src="images/Fractions.png" alt="Fraction Heroes with pizza visual aids"></div><p class="caption">Fraction Heroes</p></div>
+                <div class="screenshot-card reveal reveal-delay-5"><div class="screenshot-frame"><img src="images/NumberSense.png" alt="Number Sense activity with visual counting"></div><p class="caption">Number Sense</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Parents -->
+    <section class="parents section" id="parents" aria-labelledby="parents-title">
+        <div class="container parents-grid">
+            <div class="parents-content">
+                <div class="section-label reveal">FOR PARENTS</div>
+                <h2 class="section-title reveal reveal-delay-1" id="parents-title">A space you can trust</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Built with your child's safety and wellbeing at the center of every decision.</p>
+                <div class="parents-list">
+                    <div class="parents-item reveal reveal-delay-1"><div class="parents-item-icon" aria-hidden="true">🔒</div><div><h4>Safe &amp; Secure</h4><p>No ads, no in-app purchases, no external links. Just pure learning in a protected environment.</p></div></div>
+                    <div class="parents-item reveal reveal-delay-2"><div class="parents-item-icon" aria-hidden="true">👁️</div><div><h4>Privacy First</h4><p>We don't collect personal information. Your child's data stays where it belongs — private.</p></div></div>
+                    <div class="parents-item reveal reveal-delay-3"><div class="parents-item-icon" aria-hidden="true">📈</div><div><h4>Real Results</h4><p>Watch your child's confidence and math skills grow through hands-on visual practice.</p></div></div>
+                    <div class="parents-item reveal reveal-delay-4"><div class="parents-item-icon" aria-hidden="true">🎓</div><div><h4>Curriculum Aligned</h4><p>Content designed to complement school learning, homework, and standardized test prep.</p></div></div>
+                </div>
+            </div>
+            <div class="parents-visual reveal">
+                <div class="trust-card">
+                    <div class="trust-shield" aria-hidden="true">🛡️</div>
+                    <h3>Built for Kids</h3>
+                    <p>Every interaction is designed to be safe, supportive, and age-appropriate.</p>
+                    <div class="trust-badges">
+                        <span class="trust-badge">🚫 No Ads</span>
+                        <span class="trust-badge">🔒 No Data Collection</span>
+                        <span class="trust-badge">💳 No In-App Purchases</span>
+                        <span class="trust-badge">🔗 No External Links</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="story section" id="story" aria-labelledby="story-title">
+        <div class="container">
+            <div class="story-inner">
+                <div class="section-label reveal">OUR STORY</div>
+                <h2 class="section-title reveal reveal-delay-1" id="story-title">The Spark ✨</h2>
+                <p class="story-text reveal reveal-delay-2">One evening I sat next to my 10-year-old as she worked through fractions and decimals. She followed every step — but the numbers stayed flat on the page.</p>
+                <p class="story-text reveal reveal-delay-3">Growing up, I learned by doing. When I could see things in my head — how pieces fit into a whole, how numbers moved and scaled — learning clicked.</p>
+                <blockquote class="story-quote reveal reveal-delay-4">"Kids don't just need math explained — they need to visualize it."</blockquote>
+                <p class="story-text reveal">So I began building Math Magic — a kid-friendly math coach with bright visuals, expressive avatars, and interactive challenges that make abstract concepts feel real.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Experiment -->
+    <section class="experiment section" id="experiment" aria-labelledby="experiment-title">
+        <div class="container">
+            <div class="experiment-inner">
+                <div class="section-label reveal" style="display:block;text-align:center;">THE EXPERIMENT</div>
+                <h2 class="section-title reveal reveal-delay-1" id="experiment-title" style="text-align:center;">What if math felt like a game? 🔬</h2>
+                <p class="experiment-lead reveal reveal-delay-2">What if practice could feel more like an adventure than a worksheet?</p>
+                <p class="experiment-text reveal reveal-delay-3">That question became Math Magic — a playful experience where kids unlock puzzles, earn stars, and design avatars as they explore real math concepts:</p>
+                <div class="topics-grid">
+                    <div class="topic-card reveal"><div class="topic-icon" aria-hidden="true">📏</div><div><h4>Number Sense</h4><p>Compare numbers on interactive number lines, understand magnitude through moving dots.</p></div></div>
+                    <div class="topic-card reveal reveal-delay-1"><div class="topic-icon" aria-hidden="true">➗</div><div><h4>Long Division</h4><p>Step-by-step problems with animated guidance and instant visual feedback.</p></div></div>
+                    <div class="topic-card reveal reveal-delay-2"><div class="topic-icon" aria-hidden="true">🔵</div><div><h4>Decimals</h4><p>Practice operations with color-coded grids, rounding, and visual comparisons.</p></div></div>
+                    <div class="topic-card reveal reveal-delay-3"><div class="topic-icon" aria-hidden="true">💬</div><div><h4>AI Math Coach</h4><p>Conversational help, hints, and encouragement — all in kid-friendly language.</p></div></div>
+                </div>
+                <p class="experiment-closing reveal">Each night, I'd test new ideas with my daughter. If something didn't click, we redesigned it — until math looked like something she could touch and play with.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Matters -->
+    <section class="why-matters section" id="why" aria-labelledby="why-title">
+        <div class="container">
+            <div class="why-matters-inner">
+                <div class="section-label reveal">WHY IT MATTERS</div>
+                <h2 class="section-title reveal reveal-delay-1" id="why-title">The moment it clicks 💡</h2>
+                <p class="why-text reveal reveal-delay-2">Building Math Magic reminded me why I love creating products: the best ones solve personal problems with empathy and curiosity.</p>
+                <blockquote class="why-quote reveal reveal-delay-3">"Watching a child light up when a decimal finally clicks — when they see that 0.4 is four-tenths of a grid — that's the real reward."</blockquote>
+                <p class="why-text reveal">Math Magic accelerates learning by combining visual intuition, play, and positive feedback. Kids learn faster when they can explore, experiment, and celebrate progress — not just memorize rules.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="roadmap section" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="container">
+            <div class="roadmap-header">
+                <div class="section-label reveal">COMING SOON</div>
+                <h2 class="section-title reveal reveal-delay-1" id="roadmap-title">What's Next 🚀</h2>
+            </div>
+            <div class="roadmap-grid">
+                <div class="roadmap-item reveal"><div class="roadmap-emoji" aria-hidden="true">✖️</div><p>Multiplication</p></div>
+                <div class="roadmap-item reveal reveal-delay-1"><div class="roadmap-emoji" aria-hidden="true">🍕</div><p>Fractions</p></div>
+                <div class="roadmap-item reveal reveal-delay-2"><div class="roadmap-emoji" aria-hidden="true">👨‍👩‍👧</div><p>Parent Dashboard</p></div>
+                <div class="roadmap-item reveal reveal-delay-3"><div class="roadmap-emoji" aria-hidden="true">🏅</div><p>Badges</p></div>
+                <div class="roadmap-item reveal reveal-delay-4"><div class="roadmap-emoji" aria-hidden="true">📴</div><p>Offline Mode</p></div>
+                <div class="roadmap-item reveal reveal-delay-5"><div class="roadmap-emoji" aria-hidden="true">🎨</div><p>More Art Styles</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beta CTA -->
+    <section class="beta section" id="beta" aria-labelledby="beta-title">
+        <div class="container">
+            <div class="beta-inner">
+                <div class="beta-icon reveal" aria-hidden="true">🧪</div>
+                <h2 class="section-title reveal reveal-delay-1" id="beta-title">Join the Beta</h2>
+                <p class="beta-desc reveal reveal-delay-2">Be among the first to try Math Magic. Help us shape the future of math learning for kids — your feedback matters.</p>
+                <div class="reveal reveal-delay-3">
+                    <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="beta-link">
+                        <span class="btn-icon" aria-hidden="true">🎮</span> Join Beta Testing
+                    </a>
+                </div>
+                <p class="beta-note reveal reveal-delay-4">Available for Android devices · Free to join</p>
+                <div class="beta-features reveal reveal-delay-5">
+                    <div class="beta-feature"><span class="beta-feature-check" aria-hidden="true">✓</span> Early access to features</div>
+                    <div class="beta-feature"><span class="beta-feature-check" aria-hidden="true">✓</span> Direct line to the developer</div>
+                    <div class="beta-feature"><span class="beta-feature-check" aria-hidden="true">✓</span> Shape the product roadmap</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section class="download section" id="download" aria-labelledby="download-title">
+        <div class="container">
+            <h2 class="section-title reveal" id="download-title">Download Math Magic</h2>
+            <p class="download-sub reveal reveal-delay-1">Start your child's math adventure — completely free.</p>
+            <div class="reveal reveal-delay-2">
+                <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="store-badge-link" aria-label="Get Math Magic on Google Play">
+                    <span class="store-icon" aria-hidden="true">▶️</span>
+                    <div class="store-text"><small>GET IT ON</small><strong>Google Play</strong></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo-icon"><img src="images/icon.png" alt=""></div>
+                    <span class="footer-brand-name">Math Magic</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#dba8aeababb4a9af9bb6baafb3b6babcb2b8bdaeb5f5b8b4b6">Contact Us</a></li>
+                    <li><a href="#parents">For Parents</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AuraAgents LLC. All rights reserved. Made with ❤️ for kids who love to learn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Make all reveals visible immediately for better compatibility
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+        // Scroll reveal with IntersectionObserver
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Close mobile menu on ESC
+        document.addEventListener('keydow

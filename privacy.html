@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Math Magic</title>
+    <meta name="description" content="Privacy Policy for Math Magic - Learn how we protect your data and privacy.">
+    <meta name="theme-color" content="#FF6B35">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --orange-light: #FF8F5E;
+            --orange-glow: rgba(255, 107, 53, 0.15);
+            --teal: #1DB5A0;
+            --teal-light: #5FD4C4;
+            --purple: #7B61FF;
+            --purple-light: #A18AFF;
+            --pink: #FF5E8A;
+            --yellow: #FFD23F;
+            --yellow-warm: #FFC107;
+            --cream: #FFFBF5;
+            --cream-dark: #FFF5EB;
+            --ink: #2D2235;
+            --ink-light: #4A4158;
+            --ink-muted: #7E7591;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --shadow-card: 0 4px 24px rgba(45, 34, 53, 0.07);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Baloo 2', cursive;
+            line-height: 1.3;
+        }
+
+        a {
+            color: var(--orange);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--purple);
+            text-decoration: underline;
+        }
+
+        /* ---------- NAV ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            background: rgba(255, 251, 245, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 2px 20px rgba(45, 34, 53, 0.06);
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .nav-logo:hover {
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(123, 97, 255, 0.3);
+        }
+
+        .nav-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink-light);
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--ink);
+        }
+
+        .nav-mobile-toggle svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 140px 0 60px;
+            background: linear-gradient(135deg, var(--purple) 0%, #9B7BFF 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        /* ---------- CONTENT ---------- */
+        .content {
+            padding: 60px 0 100px;
+        }
+
+        .content-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 48px 56px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .content h2 {
+            font-size: 1.6rem;
+            color: var(--ink);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--cream-dark);
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content h3 {
+            font-size: 1.2rem;
+            color: var(--ink-light);
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        .content p {
+            margin-bottom: 16px;
+            color: var(--ink-light);
+            font-weight: 500;
+        }
+
+        .content ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+            color: var(--ink-light);
+            font-weight: 500;
+        }
+
+        .content li strong {
+            color: var(--ink);
+        }
+
+        .content a {
+            word-break: break-word;
+        }
+
+        .highlight-box {
+            background: var(--cream);
+            border-left: 4px solid var(--teal);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 24px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--ink);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--orange-glow), rgba(123, 97, 255, 0.08));
+            border-radius: var(--radius-md);
+            padding: 28px 32px;
+            margin-top: 32px;
+        }
+
+        .contact-box h3 {
+            margin-top: 0;
+            color: var(--ink);
+        }
+
+        .contact-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .contact-box li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .contact-box li:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            background: #0D0B14;
+            color: white;
+            padding: 48px 0 36px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .footer-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-brand-name {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.35);
+            font-weight: 500;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-mobile-toggle {
+                display: block;
+            }
+
+            .nav-mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 251, 245, 0.98);
+                backdrop-filter: blur(20px);
+                z-index: 200;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 28px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+
+            .nav-mobile-menu.open {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-mobile-menu a {
+                font-family: 'Baloo 2', cursive;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: var(--ink);
+            }
+
+            .nav-mobile-close {
+                position: absolute;
+                top: 20px;
+                right: 24px;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                cursor: pointer;
+                color: var(--ink);
+            }
+
+            .content-inner {
+                padding: 32px 24px;
+                border-radius: var(--radius-md);
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+        }
+
+        /* Focus styles */
+        :focus-visible {
+            outline: 3px solid var(--orange);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="Math Magic home">
+                <div class="nav-logo-icon"><img src="images/icon.png" alt=""></div>
+                Math Magic
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#parents">Parents</a></li>
+                <li><a href="index.html#story">Our Story</a></li>
+                <li><a href="index.html#beta" class="btn btn-primary">Join Beta</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+        <button class="nav-mobile-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+        <a href="index.html#features" onclick="document.getElementById('mobileMenu').classList.remove('open')">Features</a>
+        <a href="index.html#parents" onclick="document.getElementById('mobileMenu').classList.remove('open')">Parents</a>
+        <a href="index.html#story" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Story</a>
+        <a href="index.html#beta" class="btn btn-primary" onclick="document.getElementById('mobileMenu').classList.remove('open')">Join Beta</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🔒 Your Privacy Matters</div>
+            <h1>Privacy Policy</h1>
+            <p>Last Updated: January 25, 2026</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content">
+        <div class="container">
+            <div class="content-inner">
+
+                <h2>Introduction</h2>
+                <p>Welcome to Math Magic, operated by AuraAgents LLC ("we," "our," or "us"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application Math Magic (the "App").</p>
+                <p>Please read this Privacy Policy carefully. By using the App, you agree to the collection and use of information in accordance with this policy.</p>
+
+                <h2>Information We Collect</h2>
+
+                <h3>Information Automatically Collected</h3>
+                <p>When you use our App, we may automatically collect certain information, including:</p>
+                <ul>
+                    <li><strong>Device Information:</strong> Device type, operating system version, unique device identifiers</li>
+                    <li><strong>Usage Data:</strong> App features used, time spent in the App, interaction patterns</li>
+                    <li><strong>Log Data:</strong> Error logs and performance data to improve App stability</li>
+                </ul>
+
+                <h3>Information You Provide</h3>
+                <p>We may collect information you voluntarily provide, such as:</p>
+                <ul>
+                    <li><strong>Learning Progress:</strong> Math problem completion, scores, and achievements</li>
+                    <li><strong>Preferences:</strong> App settings and customization choices</li>
+                </ul>
+
+                <h2>How We Use Your Information</h2>
+                <p>We use the collected information for the following purposes:</p>
+                <ul>
+                    <li><strong>Provide and Maintain the App:</strong> Deliver the core math learning experience</li>
+                    <li><strong>Improve the App:</strong> Analyze usage patterns to enhance features and performance</li>
+                    <li><strong>Personalization:</strong> Customize the learning experience based on progress</li>
+                    <li><strong>Technical Support:</strong> Diagnose and fix technical issues</li>
+                </ul>
+
+                <h2>Data Storage and Security</h2>
+
+                <h3>Third-Party Services</h3>
+                <p>Our App uses the following third-party services:</p>
+                <ul>
+                    <li><strong>Supabase:</strong> For backend data storage and authentication
+                        <ul>
+                            <li>Supabase Privacy Policy: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">https://supabase.com/privacy</a></li>
+                            <li>Data is stored securely with encryption at rest and in transit</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Data Security</h3>
+                <p>We implement appropriate technical and organizational security measures to protect your information, including:</p>
+                <ul>
+                    <li>HTTPS encryption for all data transmission</li>
+                    <li>Secure backend infrastructure</li>
+                    <li>Regular security assessments</li>
+                </ul>
+
+                <h2>Children's Privacy</h2>
+                <div class="highlight-box">
+                    <p>Math Magic is designed for children and families. We are committed to complying with the Children's Online Privacy Protection Act (COPPA) and similar regulations worldwide.</p>
+                </div>
+                <ul>
+                    <li>We do not knowingly collect personal information from children under 13 without parental consent</li>
+                    <li>Parents/guardians can review, delete, or refuse further collection of their child's information by contacting us</li>
+                </ul>
+
+                <h2>Data Retention</h2>
+                <p>We retain your information only for as long as necessary to provide the App's services and fulfill the purposes described in this Privacy Policy. Learning progress data may be retained to allow continued use of the App.</p>
+
+                <h2>Your Rights</h2>
+                <p>Depending on your location, you may have the following rights:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of your personal data</li>
+                    <li><strong>Correction:</strong> Request correction of inaccurate data</li>
+                    <li><strong>Deletion:</strong> Request deletion of your data</li>
+                    <li><strong>Portability:</strong> Request transfer of your data</li>
+                </ul>
+                <p>To exercise these rights, contact us at <a href="mailto:support@mathmagicfun.com">support@mathmagicfun.com</a>.</p>
+
+                <h2>Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+
+                <h2>Contact Us</h2>
+                <p>If you have questions about this Privacy Policy, please contact us:</p>
+                <div class="contact-box">
+                    <ul>
+                        <li>
+                            <span class="contact-icon">📧</span>
+                            <span><strong>Email:</strong> <a href="mailto:support@mathmagicfun.com">support@mathmagicfun.com</a></span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">🌐</span>
+                            <span><strong>Website:</strong> <a href="https://mathmagicfun.com/" target="_blank" rel="noopener">mathmagicfun.com</a></span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">🏢</span>
+                            <span><strong>Company:</strong> AuraAgents LLC</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo-icon"><img src="images/icon.png" alt=""></div>
+                    <span class="footer-brand-name">Math Magic</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="privacy.html" aria-current="page">Privacy Policy</a></li>
+                    <li><a href="mailto:support@mathmagicfun.com">Contact Us</a></li>
+                    <li><a href="index.html#parents">For Parents</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AuraAgents LLC. All rights reserved. Made with ❤️ for kids who love to learn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Close mobile menu on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') document.getElementById('mobileMenu').classList.remove('open');
+        });
+    </script>
+</body>
+</html>
