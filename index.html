@@ -975,6 +975,83 @@
             font-weight: 600;
         }
 
+        .beta-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .beta-form-input {
+            flex: 1;
+            min-width: 240px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 60px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            background: white;
+            color: var(--ink);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .beta-form-input::placeholder {
+            color: var(--ink-muted);
+        }
+
+        .beta-form-input:focus {
+            outline: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 0 0 3px rgba(255,255,255,0.3);
+        }
+
+        .beta-form-btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: white;
+            color: var(--teal);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .beta-form-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .beta-form-success {
+            display: none;
+            background: rgba(255,255,255,0.15);
+            border-radius: var(--radius-md);
+            padding: 24px 32px;
+            text-align: center;
+        }
+
+        .beta-form-success.show {
+            display: block;
+        }
+
+        .beta-form-success h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .beta-form-success p {
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+
         .beta-steps {
             display: flex;
             gap: 32px;
@@ -1411,16 +1488,25 @@
                 <p class="beta-desc reveal reveal-delay-2">Be among the first to try Math Magic! Send us your Gmail address and we'll add you to our Android tester list.</p>
                 
                 <div class="reveal reveal-delay-3">
-                    <a href="mailto:support@mathmagicfun.com?subject=Math%20Magic%20Beta%20Request&body=Hi!%20I'd%20like%20to%20join%20the%20Math%20Magic%20beta.%20Please%20add%20my%20Gmail%20address%20to%20the%20tester%20list.%0A%0AMy%20Gmail%3A%20" class="beta-link">
-                        <span class="btn-icon" aria-hidden="true">📧</span> Email Us to Join
-                    </a>
+                    <form name="beta-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="beta-form" id="betaForm">
+                        <input type="hidden" name="form-name" value="beta-signup">
+                        <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+                        <input type="email" name="email" class="beta-form-input" placeholder="Enter your Gmail address" required>
+                        <button type="submit" class="beta-form-btn">
+                            <span aria-hidden="true">🚀</span> Join Beta
+                        </button>
+                    </form>
+                    <div class="beta-form-success" id="formSuccess">
+                        <h3>You're on the list!</h3>
+                        <p>We'll add your Gmail to the tester list and notify you when you're approved.</p>
+                    </div>
                 </div>
-                <p class="beta-form-note reveal reveal-delay-3">Send your Gmail address to get added to the tester list</p>
+                <p class="beta-form-note reveal reveal-delay-3">Enter your Gmail address to get added to the tester list</p>
 
                 <div class="beta-steps reveal reveal-delay-3">
                     <div class="beta-step">
                         <span class="beta-step-num">1</span>
-                        <span>Email us your Gmail</span>
+                        <span>Submit your Gmail</span>
                     </div>
                     <div class="beta-step">
                         <span class="beta-step-num">2</span>
@@ -1522,4 +1608,39 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Beta form submission handler
+        const betaForm = document.getElementById('betaForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        if (betaForm) {
+            betaForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(betaForm);
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    betaForm.style.display = 'none';
+                    formSuccess.classList.add('show');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again or email us at support@mathmagicfun.com');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
               
