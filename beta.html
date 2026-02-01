@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Math Magic Beta — Android App</title>
+    <meta name="description" content="Join the Math Magic Android beta! Get early access to interactive math games with an AI coach and visual learning tools for kids.">
+    <meta name="theme-color" content="#1DB5A0">
+    <meta property="og:title" content="Join Math Magic Beta — Android App">
+    <meta property="og:description" content="Get early access to Math Magic for Android. Interactive math games, AI coaching, and visual learning for kids.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --teal: #1DB5A0;
+            --teal-dark: #14917F;
+            --purple: #7B61FF;
+            --cream: #FFFBF5;
+            --ink: #2D2235;
+            --ink-muted: #7E7591;
+            --radius-md: 20px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #1DB5A0 0%, #14917F 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20l2.83-2.83 1.41 1.41L1.41 21.41 0 20zm0-18.59L2.83.59 4.24 2 1.41 4.83 0 3.41V1.41zM20 18.59l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59zM40 20l-2.83 2.83-1.41-1.41L38.59 20l-2.83-2.83 1.41-1.41L40 18.59V20z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 500px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        h1 {
+            font-family: 'Baloo 2', cursive;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .beta-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .beta-form-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 60px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            background: white;
+            color: var(--ink);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .beta-form-input::placeholder {
+            color: var(--ink-muted);
+        }
+
+        .beta-form-input:focus {
+            outline: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 0 0 3px rgba(255,255,255,0.3);
+        }
+
+        .beta-form-btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: white;
+            color: var(--teal);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .beta-form-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .beta-form-success {
+            display: none;
+            background: rgba(255,255,255,0.15);
+            border-radius: var(--radius-md);
+            padding: 24px 32px;
+            margin-bottom: 32px;
+        }
+
+        .beta-form-success.show {
+            display: block;
+        }
+
+        .beta-form-success h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .beta-form-success p {
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .steps {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .download-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        .download-note {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            font-weight: 600;
+        }
+
+        .features {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .back-link {
+            margin-top: 32px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .web-link {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .web-link p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 12px;
+        }
+
+        .web-link a {
+            color: white;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .web-link a:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 500px) {
+            .steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><img src="images/icon.png" alt=""></div>
+            <span class="logo-text">Math Magic</span>
+        </a>
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            Android Beta
+        </div>
+
+        <h1>Join the Beta</h1>
+        <p class="subtitle">Get early access to Math Magic for Android! Submit your Gmail and we'll add you to our tester list.</p>
+
+        <form name="beta-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="beta-form" id="betaForm">
+            <input type="hidden" name="form-name" value="beta-signup">
+            <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+            <input type="email" name="email" class="beta-form-input" placeholder="Enter your Gmail address" required>
+            <button type="submit" class="beta-form-btn">
+                <span>🚀</span> Join Beta
+            </button>
+        </form>
+        <p class="form-note">We'll email you when you're approved</p>
+
+        <div class="beta-form-success" id="formSuccess">
+            <h3>You're on the list!</h3>
+            <p>We'll add your Gmail to the tester list and notify you when you're approved to download.</p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <span class="step-num">1</span>
+                <span>Submit Gmail</span>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <span>Get approved</span>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <span>Download app</span>
+            </div>
+        </div>
+
+        <div class="divider">
+            <span>Already approved?</span>
+        </div>
+
+        <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="download-btn">
+            <span>🎮</span> Download from Play Store
+        </a>
+        <p class="download-note">Requires Gmail approval first</p>
+
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                Early access
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                Shape the product
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                Direct feedback
+            </div>
+        </div>
+
+        <div class="web-link">
+            <p>Don't have Android? <a href="try.html">Try the Web App</a></p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Math Magic home</a>
+    </div>
+
+    <script>
+        const betaForm = document.getElementById('betaForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        if (betaForm) {
+            betaForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(betaForm);
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    betaForm.style.display = 'none';
+                    document.querySelector('.form-note').style.display = 'none';
+                    formSuccess.classList.add('show');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again or email us at support@mathmagicfun.com');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
