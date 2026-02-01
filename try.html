@@ -26,6 +26,106 @@
             --ink-muted: #7E7591;
         }
 
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .nav-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .nav-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-btn {
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: white;
+            color: var(--orange);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: white;
+        }
+
+        .nav-mobile-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+        }
+
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -44,7 +144,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 80px 24px 24px;
             color: white;
             text-align: center;
             position: relative;
@@ -245,6 +345,23 @@
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon"><img src="images/icon.png" alt=""></div>
+                Math Magic
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#parents">Parents</a></li>
+                <li><a href="beta.html" class="nav-btn">Join Beta</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Menu" onclick="window.location.href='index.html'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
     <div class="floaters" aria-hidden="true">
         <span class="floater">+</span>
         <span class="floater">÷</span>
@@ -255,11 +372,6 @@
     </div>
 
     <div class="container">
-        <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="images/icon.png" alt=""></div>
-            <span class="logo-text">Math Magic</span>
-        </a>
-
         <div class="mascot">
             <img src="images/funmascot.png" alt="Math Magic mascot">
         </div>
@@ -286,8 +398,6 @@
                 100% free
             </div>
         </div>
-
-        <a href="index.html" class="back-link">← Back to Math Magic home</a>
     </div>
 </body>
 </html>
