@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Math Magic Beta — Android App</title>
     <meta name="description" content="Join the Math Magic Android beta! Get early access to interactive math games with an AI coach and visual learning tools for kids.">
-    <meta name="theme-color" content="#1DB5A0">
+    <meta name="theme-color" content="#FF6B35">
     <meta property="og:title" content="Join Math Magic Beta — Android App">
     <meta property="og:description" content="Get early access to Math Magic for Android. Interactive math games, AI coaching, and visual learning for kids.">
     <meta property="og:type" content="website">
@@ -15,13 +15,40 @@
     <style>
         :root {
             --orange: #FF6B35;
-            --teal: #1DB5A0;
-            --teal-dark: #14917F;
+            --orange-dark: #E55A2B;
             --purple: #7B61FF;
             --cream: #FFFBF5;
             --ink: #2D2235;
             --ink-muted: #7E7591;
             --radius-md: 20px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8F5E 50%, #FFD23F 100%);
+            min-height: 100vh;
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Navigation */
@@ -32,7 +59,7 @@
             right: 0;
             z-index: 100;
             padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
@@ -89,20 +116,21 @@
         }
 
         .nav-btn {
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 60px;
             font-family: 'Baloo 2', cursive;
             font-size: 0.9rem;
             font-weight: 700;
-            background: white;
-            color: var(--teal);
+            background: var(--ink);
+            color: white;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .nav-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
         }
 
         .nav-mobile-toggle {
@@ -124,85 +152,41 @@
             .nav-mobile-toggle { display: block; }
         }
 
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            -webkit-text-size-adjust: 100%;
-        }
-
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(135deg, #1DB5A0 0%, #14917F 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 24px 24px;
-            color: white;
-            text-align: center;
+        /* Main content */
+        .main {
             position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20l2.83-2.83 1.41 1.41L1.41 21.41 0 20zm0-18.59L2.83.59 4.24 2 1.41 4.83 0 3.41V1.41zM20 18.59l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59zM40 20l-2.83 2.83-1.41-1.41L38.59 20l-2.83-2.83 1.41-1.41L40 18.59V20z'/%3E%3C/g%3E%3C/svg%3E") repeat;
-            pointer-events: none;
+            z-index: 1;
+            padding: 100px 24px 60px;
         }
 
         .container {
-            max-width: 500px;
-            position: relative;
-            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .logo {
-            display: inline-flex;
+        /* Hero section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 32px;
-            text-decoration: none;
-            color: white;
+            margin-bottom: 60px;
         }
 
-        .logo-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .logo-text {
-            font-family: 'Baloo 2', cursive;
-            font-size: 1.8rem;
-            font-weight: 800;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        .hero-content {
+            text-align: left;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.2);
             padding: 8px 18px;
             border-radius: 60px;
             font-weight: 700;
             font-size: 0.85rem;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .badge-dot {
@@ -220,9 +204,9 @@
 
         h1 {
             font-family: 'Baloo 2', cursive;
-            font-size: clamp(2rem, 6vw, 2.8rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
-            line-height: 1.15;
+            line-height: 1.1;
             margin-bottom: 16px;
             text-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
@@ -231,21 +215,21 @@
             font-size: 1.1rem;
             font-weight: 600;
             opacity: 0.9;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             line-height: 1.6;
         }
 
+        /* Form */
         .beta-form {
             display: flex;
             gap: 12px;
-            justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 16px;
         }
 
         .beta-form-input {
             flex: 1;
-            min-width: 220px;
+            min-width: 200px;
             padding: 16px 24px;
             border: none;
             border-radius: 60px;
@@ -263,20 +247,20 @@
 
         .beta-form-input:focus {
             outline: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 0 0 3px rgba(255,255,255,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 0 0 3px rgba(255,255,255,0.4);
         }
 
         .beta-form-btn {
-            padding: 16px 32px;
+            padding: 16px 28px;
             border: none;
             border-radius: 60px;
             font-family: 'Baloo 2', cursive;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            background: white;
-            color: var(--teal);
+            background: var(--ink);
+            color: white;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
             display: inline-flex;
             align-items: center;
@@ -285,22 +269,21 @@
 
         .beta-form-btn:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
         }
 
         .form-note {
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.85;
             font-weight: 600;
-            margin-bottom: 32px;
         }
 
         .beta-form-success {
             display: none;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.2);
             border-radius: var(--radius-md);
-            padding: 24px 32px;
-            margin-bottom: 32px;
+            padding: 24px;
+            text-align: center;
         }
 
         .beta-form-success.show {
@@ -318,158 +301,163 @@
             font-weight: 500;
         }
 
-        .steps {
+        /* Screenshots */
+        .hero-screenshots {
             display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .step-num {
-            width: 28px;
-            height: 28px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Baloo 2', cursive;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
             gap: 16px;
-            margin: 24px 0;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.85rem;
-            font-weight: 600;
+            justify-content: center;
         }
 
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255,255,255,0.2);
+        .screenshot {
+            width: 140px;
+            height: 280px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:nth-child(2) {
+            transform: translateY(30px);
+        }
+
+        .screenshot:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot:nth-child(2):hover {
+            transform: translateY(30px) scale(1.05);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* Features section */
+        .features-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .features-title {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Already approved */
+        .approved-section {
+            text-align: center;
+            padding: 32px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 20px;
+        }
+
+        .approved-section p {
+            font-weight: 600;
+            margin-bottom: 16px;
+            opacity: 0.9;
         }
 
         .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255,255,255,0.15);
-            color: white;
+            background: white;
+            color: var(--orange);
             padding: 14px 28px;
             border-radius: 60px;
             font-family: 'Baloo 2', cursive;
             font-size: 1rem;
             font-weight: 700;
             text-decoration: none;
-            border: 1.5px solid rgba(255,255,255,0.25);
-            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .download-btn:hover {
-            background: rgba(255,255,255,0.25);
             transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
         }
 
         .download-note {
             margin-top: 12px;
             font-size: 0.85rem;
             opacity: 0.7;
-            font-weight: 600;
-        }
-
-        .features {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-        }
-
-        .back-link {
-            margin-top: 32px;
-            color: rgba(255,255,255,0.7);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .back-link:hover {
-            color: white;
         }
 
         .web-link {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .web-link p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.95rem;
         }
 
         .web-link a {
             color: white;
             font-weight: 700;
-            text-decoration: underline;
-            text-underline-offset: 3px;
         }
 
-        .web-link a:hover {
-            opacity: 0.9;
-        }
-
-        @media (max-width: 500px) {
-            .steps {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .features {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
+            .hero-content {
+                text-align: center;
+                order: 2;
+            }
+
+            .hero-screenshots {
+                order: 1;
+            }
+
+            .screenshot {
+                width: 120px;
+                height: 240px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
             }
         }
     </style>
@@ -492,73 +480,81 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="badge">
-            <span class="badge-dot"></span>
-            Android Beta
-        </div>
+    <main class="main">
+        <div class="container">
+            <!-- Hero with form and screenshots -->
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        Android Beta
+                    </div>
 
-        <h1>Join the Beta</h1>
-        <p class="subtitle">Get early access to Math Magic for Android! Submit your Gmail and we'll add you to our tester list.</p>
+                    <h1>Get Early Access to Math Magic</h1>
+                    <p class="subtitle">Join our beta and help shape the future of math learning! Submit your Gmail to get added to the Android tester list.</p>
 
-        <form name="beta-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="beta-form" id="betaForm">
-            <input type="hidden" name="form-name" value="beta-signup">
-            <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
-            <input type="email" name="email" class="beta-form-input" placeholder="Enter your Gmail address" required>
-            <button type="submit" class="beta-form-btn">
-                <span>🚀</span> Join Beta
-            </button>
-        </form>
-        <p class="form-note">We'll email you when you're approved</p>
+                    <form name="beta-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="beta-form" id="betaForm">
+                        <input type="hidden" name="form-name" value="beta-signup">
+                        <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+                        <input type="email" name="email" class="beta-form-input" placeholder="Enter your Gmail" required>
+                        <button type="submit" class="beta-form-btn">
+                            <span>🚀</span> Join Beta
+                        </button>
+                    </form>
+                    <p class="form-note">We'll notify you when you're approved to download</p>
 
-        <div class="beta-form-success" id="formSuccess">
-            <h3>You're on the list!</h3>
-            <p>We'll add your Gmail to the tester list and notify you when you're approved to download.</p>
-        </div>
+                    <div class="beta-form-success" id="formSuccess">
+                        <h3>You're on the list!</h3>
+                        <p>We'll add your Gmail and email you when approved.</p>
+                    </div>
+                </div>
 
-        <div class="steps">
-            <div class="step">
-                <span class="step-num">1</span>
-                <span>Submit Gmail</span>
+                <div class="hero-screenshots">
+                    <div class="screenshot">
+                        <img src="images/MathMajicMainScreen.png" alt="Math Magic home screen">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/Avtar.png" alt="Create your avatar">
+                    </div>
+                </div>
             </div>
-            <div class="step">
-                <span class="step-num">2</span>
-                <span>Get approved</span>
+
+            <!-- What you get -->
+            <div class="features-section">
+                <h2 class="features-title">What You'll Get</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Adventures</h3>
+                        <p>Number Sense, Decimals, Fractions, Long Division — all with visual learning</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI Math Coach</h3>
+                        <p>Get help anytime with step-by-step guidance in kid-friendly language</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Dream Avatars</h3>
+                        <p>Create and customize unique characters that level up as you learn</p>
+                    </div>
+                </div>
             </div>
-            <div class="step">
-                <span class="step-num">3</span>
-                <span>Download app</span>
+
+            <!-- Already approved -->
+            <div class="approved-section">
+                <p>Already approved as a tester?</p>
+                <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="download-btn">
+                    <span>🎮</span> Download from Play Store
+                </a>
+                <p class="download-note">Requires Gmail approval first</p>
+
+                <div class="web-link">
+                    <p>Don't have Android? <a href="try.html">Try the Web App</a> instead!</p>
+                </div>
             </div>
         </div>
-
-        <div class="divider">
-            <span>Already approved?</span>
-        </div>
-
-        <a href="https://play.google.com/apps/internaltest/4701668521062746476" class="download-btn">
-            <span>🎮</span> Download from Play Store
-        </a>
-        <p class="download-note">Requires Gmail approval first</p>
-
-        <div class="features">
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                Early access
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                Shape the product
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                Direct feedback
-            </div>
-        </div>
-
-        <div class="web-link">
-            <p>Don't have Android? <a href="try.html">Try the Web App</a></p>
-        </div>
-    </div>
+    </main>
 
     <script>
         const betaForm = document.getElementById('betaForm');
