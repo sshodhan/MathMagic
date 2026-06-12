@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<!-- Math Magic Parent Hub Page v1.0 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Hub — See your child's math progress, privately | Math Magic</title>
+    <meta name="description" content="The Parent Hub gives you a warm, growth-framed view of your child's math week in about two minutes — plus an optional, privacy-first weekly email you control.">
+    <meta name="theme-color" content="#FF6B35">
+    <meta property="og:title" content="Parent Hub — See your child's math progress, privately | Math Magic">
+    <meta property="og:description" content="A gentle weekly snapshot of your child's math journey. No scores, no surveillance — just enough to celebrate the wins and know where to help.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mathmagicfun.info/parents/">
+    <meta property="og:image" content="https://mathmagicfun.info/images/og-image.png">
+    <meta property="og:site_name" content="Math Magic">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Parent Hub — See your child's math progress, privately | Math Magic">
+    <meta name="twitter:description" content="A gentle weekly snapshot of your child's math journey. No scores, no surveillance — just enough to celebrate the wins and know where to help.">
+    <meta name="twitter:image" content="https://mathmagicfun.info/images/og-image.png">
+    <link rel="canonical" href="https://mathmagicfun.info/parents/">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="see child's math progress, kids math app for parents, parent dashboard math, weekly progress email, math app no ads, ages 6-12">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the Parent Hub track or grade my child?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. There are no grades or labels — skills show as growth-framed status like Strong, Growing, or Let's practice, and you see activity highlights, not raw scores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Parent Hub free? Do I have to set it up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's free, optional, and never blocks play. Setup takes under a minute from the app's settings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's in the weekly email?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Activity highlights — stars earned, problems solved, highest level — and a short summary of the week. Nothing sensitive, ever."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I stop the emails?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One click on the unsubscribe link in any email, anytime."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What ages is Math Magic for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's built for elementary and middle school math — number sense, fractions, decimals, and long division — designed for ages 6–12."
+          }
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --orange-light: #FF8F5E;
+            --orange-glow: rgba(255, 107, 53, 0.15);
+            --teal: #1DB5A0;
+            --teal-light: #5FD4C4;
+            --purple: #7B61FF;
+            --purple-light: #A18AFF;
+            --pink: #FF5E8A;
+            --yellow: #FFD23F;
+            --yellow-warm: #FFC107;
+            --cream: #FFFBF5;
+            --cream-dark: #FFF5EB;
+            --ink: #2D2235;
+            --ink-light: #4A4158;
+            --ink-muted: #7E7591;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --radius-xl: 48px;
+            --shadow-card: 0 4px 24px rgba(45, 34, 53, 0.07);
+            --shadow-card-hover: 0 12px 40px rgba(45, 34, 53, 0.12);
+            --shadow-float: 0 20px 60px rgba(45, 34, 53, 0.15);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Baloo 2', cursive;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ---------- REUSABLE ---------- */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--ink-muted);
+            max-width: 560px;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(0.99);
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--ink);
+            box-shadow: var(--shadow-card);
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        /* ---------- SCROLL REVEAL ---------- */
+        .reveal {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .js-enabled .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+        }
+
+        .js-enabled .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ---------- NAV ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 251, 245, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 2px 20px rgba(45, 34, 53, 0.06);
+            padding: 10px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(123, 97, 255, 0.3);
+        }
+
+        .nav-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-cta {
+            padding: 10px 22px !important;
+            font-size: 0.95rem !important;
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--ink);
+        }
+
+        .nav-mobile-toggle svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        /* Mobile menu - hidden by default on desktop */
+        .nav-mobile-menu {
+            display: none;
+        }
+
+        /* ---------- HERO ---------- */
+        .parents-hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: var(--cream);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 94, 138, 0.12);
+            color: var(--pink);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            border: 1.5px solid rgba(255, 94, 138, 0.2);
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--ink-muted);
+            margin-bottom: 36px;
+            max-width: 480px;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual { display: flex; align-items: center; justify-content: center; }
+
+        .hub-shot {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-float);
+            overflow: hidden;
+            position: relative;
+            max-width: 440px;
+        }
+
+        .hub-shot::before {
+            content: '';
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            background: linear-gradient(135deg, var(--pink), var(--purple), var(--teal));
+            border-radius: 35px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .hub-shot-wide { max-width: 880px; margin: 48px auto 0; }
+
+        /* ---------- PRODUCT TOUR ---------- */
+        .tour { background: white; }
+        .tour-header { text-align: center; margin-bottom: 60px; }
+        .tour-header .section-label { color: var(--teal); }
+        .tour-header .section-subtitle { margin: 0 auto; }
+
+        .tour-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-card:nth-child(1)::before { background: var(--yellow-warm); }
+        .feature-card:nth-child(2)::before { background: var(--teal); }
+        .feature-card:nth-child(3)::before { background: var(--orange); }
+        .feature-card:nth-child(4)::before { background: var(--purple); }
+
+        .feature-icon-wrap {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon-wrap { background: rgba(255, 193, 7, 0.15); }
+        .feature-card:nth-child(2) .feature-icon-wrap { background: rgba(29, 181, 160, 0.12); }
+        .feature-card:nth-child(3) .feature-icon-wrap { background: rgba(255, 107, 53, 0.12); }
+        .feature-card:nth-child(4) .feature-icon-wrap { background: rgba(123, 97, 255, 0.12); }
+
+        .feature-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { color: var(--ink-muted); font-size: 0.95rem; font-weight: 500; line-height: 1.6; }
+
+        /* ---------- GROWTH-FRAMED ---------- */
+        .growth { background: var(--cream-dark); }
+        .growth-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+        .growth .section-label { color: var(--purple); }
+
+        .growth-text {
+            font-size: 1.15rem;
+            color: var(--ink-light);
+            margin-bottom: 24px;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .story-quote {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--orange);
+            margin: 48px 0 0;
+            padding: 28px 36px;
+            background: var(--orange-glow);
+            border-radius: var(--radius-md);
+            border-left: 5px solid var(--orange);
+            text-align: left;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        /* ---------- EMAIL OPT-IN ---------- */
+        .email-optin { background: white; }
+        .email-optin-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .email-optin .section-label { color: var(--orange); }
+        .email-optin .section-subtitle { margin: 0 auto 16px; }
+
+        .email-reassure {
+            font-size: 1.05rem;
+            color: var(--ink-light);
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .email-steps {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .email-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--ink-light);
+        }
+
+        .email-step-num {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            background: var(--orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- TRUST ---------- */
+        .trust { background: var(--cream); }
+        .trust-header { text-align: center; margin-bottom: 60px; }
+        .trust-header .section-label { color: var(--pink); }
+        .trust-header .section-subtitle { margin: 0 auto; }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+
+        .topic-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+
+        .topic-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: var(--cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topic-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+        .topic-card p { font-size: 0.85rem; color: var(--ink-muted); font-weight: 500; line-height: 1.5; }
+
+        .trust-badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .trust-badge {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ink-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .trust-promise {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 1.05rem;
+            color: var(--ink-light);
+            font-weight: 600;
+        }
+
+        /* ---------- FAQ ---------- */
+        .faq { background: white; }
+        .faq-header { text-align: center; margin-bottom: 50px; }
+        .faq-header .section-label { color: var(--teal); }
+
+        .faq-list {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item[open] { border-color: rgba(29, 181, 160, 0.25); }
+
+        .faq-q {
+            list-style: none;
+            cursor: pointer;
+            padding: 20px 56px 20px 24px;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 1.05rem;
+            position: relative;
+        }
+
+        .faq-q::-webkit-details-marker { display: none; }
+
+        .faq-q::after {
+            content: '+';
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+            color: var(--teal);
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+
+        .faq-item[open] .faq-q::after { content: '–'; }
+
+        .faq-a {
+            padding: 0 24px 20px;
+            color: var(--ink-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* ---------- SAMPLE EMAIL DIALOG ---------- */
+        .email-dialog {
+            border: none;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: min(560px, calc(100vw - 48px));
+            background: white;
+            box-shadow: var(--shadow-float);
+            margin: auto;
+        }
+
+        .email-dialog::backdrop {
+            background: rgba(45, 34, 53, 0.55);
+            backdrop-filter: blur(4px);
+        }
+
+        .email-dialog h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            padding-right: 44px;
+        }
+
+        .email-dialog img {
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+        }
+
+        .email-dialog-caption {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .email-dialog-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: var(--cream);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--ink);
+            transition: background 0.2s;
+        }
+
+        .email-dialog-close:hover { background: var(--cream-dark); }
+
+        /* ---------- CLOSING CTA ---------- */
+        .closing-cta {
+            background: linear-gradient(135deg, #1DB5A0 0%, #14917F 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .closing-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20l2.83-2.83 1.41 1.41L1.41 21.41 0 20zm0-18.59L2.83.59 4.24 2 1.41 4.83 0 3.41V1.41zM20 18.59l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59zM40 20l-2.83 2.83-1.41-1.41L38.59 20l-2.83-2.83 1.41-1.41L40 18.59V20z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+        }
+
+        .closing-cta-inner { text-align: center; position: relative; z-index: 1; }
+        .closing-cta .section-title { color: white; }
+
+        .closing-cta-desc {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 520px;
+            margin: 0 auto 36px;
+            font-weight: 500;
+        }
+
+        .closing-cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .beta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--teal);
+            padding: 18px 36px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.15rem;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+        }
+
+        .beta-link:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+        .beta-link .btn-icon { font-size: 1.4rem; }
+
+        .beta-link-ghost {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            box-shadow: none;
+        }
+
+        .beta-link-ghost:hover { background: rgba(255,255,255,0.2); }
+
+        /* ---------- FOOTER ---------- */
+        .footer { background: #0D0B14; color: white; padding: 48px 0 36px; }
+
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+
+        .footer-brand { display: flex; align-items: center; gap: 10px; }
+
+        .footer-logo-icon {
+            width: 32px; height: 32px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .footer-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-brand-name { font-family: 'Baloo 2', cursive; font-size: 1.15rem; font-weight: 700; }
+
+        .footer-links { display: flex; gap: 28px; list-style: none; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: white; }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.35);
+            font-weight: 500;
+        }
+
+        /* ---------- ACCESSIBILITY ---------- */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+        :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 48px; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { order: -1; }
+            .tour-grid { grid-template-columns: 1fr; }
+            .topics-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .section { padding: 72px 0; }
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+
+            .nav-mobile-menu {
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(255, 251, 245, 0.98);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                z-index: 200;
+                display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+                opacity: 0; pointer-events: none; transition: opacity 0.3s;
+            }
+
+            .nav-mobile-menu.open { opacity: 1; pointer-events: all; }
+            .nav-mobile-menu a { font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+
+            .nav-mobile-close {
+                position: absolute; top: 20px; right: 24px;
+                background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--ink); padding: 8px;
+            }
+
+            .parents-hero { padding: 130px 0 72px; }
+            .hero-title { font-size: 2.2rem; }
+            .email-steps { flex-direction: column; align-items: center; gap: 16px; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="/" class="nav-logo" aria-label="Math Magic home">
+                <div class="nav-logo-icon"><img src="/images/icon.png" alt=""></div>
+                Math Magic
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/parents/" aria-current="page">Parents</a></li>
+                <li><a href="/#story">Our Story</a></li>
+                <li><a href="/privacy.html">Privacy</a></li>
+                <li><a href="/try.html" class="btn btn-secondary nav-cta" style="margin-right: 8px;">Try Free</a></li>
+                <li><a href="/beta.html" class="btn btn-primary nav-cta">Join Beta</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+        <button class="nav-mobile-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+        <a href="/#features">Features</a>
+        <a href="/parents/" onclick="document.getElementById('mobileMenu').classList.remove('open')">Parents</a>
+        <a href="/#story">Our Story</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/try.html" class="btn btn-secondary">Try Free</a>
+        <a href="/beta.html" class="btn btn-primary">Join Beta</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="parents-hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge reveal">For Parents</div>
+                <h1 class="hero-title reveal reveal-delay-1" id="hero-title">Stay close to the journey, not on top of it</h1>
+                <p class="hero-desc reveal reveal-delay-2">The Parent Hub gives you a gentle, growth-framed view of your child's math week — in about two minutes — with a privacy-first email you control.</p>
+                <div class="hero-buttons reveal reveal-delay-3">
+                    <a href="https://sshodhan.vercel.app/settings?tab=parent" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <span class="btn-icon" aria-hidden="true">🌐</span> Try the Web App
+                    </a>
+                    <a href="/beta.html" class="btn btn-secondary">Join the Beta</a>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-delay-2">
+                <div class="hub-shot">
+                    <img src="/images/ParentHub.png" alt="The Parent Hub weekly dashboard: stars earned, problems solved, highest level, day-by-day activity, and Coach Maya's read">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tour -->
+    <section class="tour section" id="tour" aria-labelledby="tour-title">
+        <div class="container">
+            <div class="tour-header">
+                <div class="section-label reveal">YOUR WEEKLY SNAPSHOT</div>
+                <h2 class="section-title reveal reveal-delay-1" id="tour-title">The whole week, in one calm screen</h2>
+                <p class="section-subtitle reveal reveal-delay-2">No dashboards to decode, no charts to squint at — just the moments worth knowing about.</p>
+            </div>
+            <div class="tour-grid">
+                <div class="feature-card reveal"><div class="feature-icon-wrap" aria-hidden="true">⭐</div><h3>Highlights</h3><p>Stars earned, problems solved, highest level reached, and whiteboards shared — the week's wins at a glance.</p></div>
+                <div class="feature-card reveal reveal-delay-1"><div class="feature-icon-wrap" aria-hidden="true">📆</div><h3>Day by day</h3><p>A simple rhythm of when they practiced, so streaks and gaps are obvious at a glance.</p></div>
+                <div class="feature-card reveal reveal-delay-2"><div class="feature-icon-wrap" aria-hidden="true">🦊</div><h3>Coach Maya's read</h3><p>A short, friendly summary of the week that names a strength or a growth area in plain English.</p></div>
+                <div class="feature-card reveal reveal-delay-3"><div class="feature-icon-wrap" aria-hidden="true">🧭</div><h3>Skills snapshot</h3><p>Skills surface as <em>Strong · Growing · Let's practice</em> once there's enough practice to be fair — no guessing from one question.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Encouragement by Design -->
+    <section class="growth section" id="growth" aria-labelledby="growth-title">
+        <div class="container">
+            <div class="growth-inner">
+                <div class="section-label reveal">GROWTH-FRAMED</div>
+                <h2 class="section-title reveal reveal-delay-1" id="growth-title">We never say "weak," "failing," or "behind"</h2>
+                <p class="growth-text reveal reveal-delay-2">Kids learn faster when mistakes feel safe. So the Parent Hub speaks the way a good coach would — celebrating tries, naming next steps, and framing every skill as a work in progress.</p>
+                <p class="growth-text reveal reveal-delay-3">You'll see where a little help goes far, plus a few quick, low-pressure ways to support at home — most under 10 minutes.</p>
+                <blockquote class="story-quote reveal reveal-delay-4">"Kids don't just need math explained — they need to visualize it."</blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Opt-in -->
+    <section class="email-optin section" id="email" aria-labelledby="email-title">
+        <div class="container">
+            <div class="email-optin-inner">
+                <div class="section-label reveal">PRIVACY-FIRST UPDATES</div>
+                <h2 class="section-title reveal reveal-delay-1" id="email-title">A weekly email — only if you say so</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Want a recap in your inbox? Enter your email and we send one confirmation. Nothing else is ever sent until you click the link from your own inbox. Each email carries activity highlights only — never raw scores or sensitive detail — and every message has one-click unsubscribe.</p>
+                <p class="email-reassure reveal reveal-delay-2">Typing an address never opts anyone in. A grown-up's click is the only switch.</p>
+                <div class="email-steps reveal reveal-delay-3">
+                    <div class="email-step"><span class="email-step-num">1</span><span>Enter your email</span></div>
+                    <div class="email-step"><span class="email-step-num">2</span><span>Confirm from your inbox</span></div>
+                    <div class="email-step"><span class="email-step-num">3</span><span>Get a short recap each Monday</span></div>
+                </div>
+                <button type="button" class="btn btn-secondary reveal reveal-delay-4" onclick="document.getElementById('emailDialog').showModal()">See a sample weekly email</button>
+                <div class="hub-shot hub-shot-wide reveal reveal-delay-4">
+                    <img src="/images/ParentAccountSetup.png" alt="Parent Account Setup screen with name, relationship, and email — setup complete confirmation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Space You Can Trust -->
+    <section class="trust section" id="trust" aria-labelledby="trust-title">
+        <div class="container">
+            <div class="trust-header">
+                <div class="section-label reveal">A SPACE YOU CAN TRUST</div>
+                <h2 class="section-title reveal reveal-delay-1" id="trust-title">Safety isn't a feature. It's the foundation.</h2>
+                <p class="section-subtitle reveal reveal-delay-2">Built with your child's safety and wellbeing at the center of every decision.</p>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card reveal"><div class="topic-icon" aria-hidden="true">🔒</div><div><h4>Safe &amp; Secure</h4><p>No ads, no in-app purchases, no external links. Just pure learning in a protected environment.</p></div></div>
+                <div class="topic-card reveal reveal-delay-1"><div class="topic-icon" aria-hidden="true">👁️</div><div><h4>Privacy First</h4><p>We collect only what learning needs: practice activity and signals that help the coach personalize. Never sold, never used for ads, never shared with advertisers.</p></div></div>
+                <div class="topic-card reveal reveal-delay-2"><div class="topic-icon" aria-hidden="true">📈</div><div><h4>Real Results</h4><p>Watch your child's confidence and math skills grow through hands-on visual practice.</p></div></div>
+                <div class="topic-card reveal reveal-delay-3"><div class="topic-icon" aria-hidden="true">🎓</div><div><h4>Curriculum Aligned</h4><p>Content designed to complement school learning, homework, and standardized test prep.</p></div></div>
+                <div class="topic-card reveal reveal-delay-4"><div class="topic-icon" aria-hidden="true">🛡️</div><div><h4>Built for Kids</h4><p>Every interaction is designed to be safe, supportive, and age-appropriate.</p></div></div>
+            </div>
+            <div class="trust-badges reveal reveal-delay-4">
+                <span class="trust-badge">🚫 No Ads</span>
+                <span class="trust-badge">🔒 Learning Data Only</span>
+                <span class="trust-badge">💳 No In-App Purchases</span>
+                <span class="trust-badge">🔗 No External Links</span>
+                <span class="trust-badge">✅ Parent-confirmed emails</span>
+            </div>
+            <p class="trust-promise reveal reveal-delay-5">We never sell your child's data — and never share it with advertisers. Ever.</p>
+        </div>
+    </section>
+
+    <!-- Parent FAQ -->
+    <section class="faq section" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+            <div class="faq-header">
+                <div class="section-label reveal">PARENT FAQ</div>
+                <h2 class="section-title reveal reveal-delay-1" id="faq-title">Good questions, honest answers</h2>
+            </div>
+            <div class="faq-list reveal reveal-delay-2">
+                <details class="faq-item">
+                    <summary class="faq-q">Does the Parent Hub track or grade my child?</summary>
+                    <p class="faq-a">No. There are no grades or labels — skills show as growth-framed status like Strong, Growing, or Let's practice, and you see activity highlights, not raw scores.</p>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-q">Is the Parent Hub free? Do I have to set it up?</summary>
+                    <p class="faq-a">It's free, optional, and never blocks play. Setup takes under a minute from the app's settings.</p>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-q">What's in the weekly email?</summary>
+                    <p class="faq-a">Activity highlights — stars earned, problems solved, highest level — and a short summary of the week. Nothing sensitive, ever.</p>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-q">How do I stop the emails?</summary>
+                    <p class="faq-a">One click on the unsubscribe link in any email, anytime.</p>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-q">What ages is Math Magic for?</summary>
+                    <p class="faq-a">It's built for elementary and middle school math — number sense, fractions, decimals, and long division — designed for ages 6–12.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="closing-cta section" id="get-started" aria-labelledby="closing-title">
+        <div class="container">
+            <div class="closing-cta-inner">
+                <h2 class="section-title reveal" id="closing-title">Two minutes a week. A lot more connection.</h2>
+                <p class="closing-cta-desc reveal reveal-delay-1">Open the Parent Hub in the web app, or join the Android beta to follow along from day one.</p>
+                <div class="closing-cta-buttons reveal reveal-delay-2">
+                    <a href="https://sshodhan.vercel.app/settings?tab=parent" target="_blank" rel="noopener noreferrer" class="beta-link">
+                        <span class="btn-icon" aria-hidden="true">🌐</span> Try the Web App
+                    </a>
+                    <a href="/beta.html" class="beta-link beta-link-ghost">
+                        <span class="btn-icon" aria-hidden="true">🧪</span> Join the Android Beta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo-icon"><img src="/images/icon.png" alt=""></div>
+                    <span class="footer-brand-name">Math Magic</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="mailto:support@mathmagicfun.com">Contact Us</a></li>
+                    <li><a href="/parents/">For Parents</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AuraAgents LLC. All rights reserved. Made with ❤️ for kids who love to learn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sample Weekly Email Dialog -->
+    <dialog class="email-dialog" id="emailDialog" aria-labelledby="email-dialog-title">
+        <button type="button" class="email-dialog-close" aria-label="Close preview" autofocus onclick="document.getElementById('emailDialog').close()">✕</button>
+        <h3 id="email-dialog-title">A sample weekly digest</h3>
+        <img src="/images/ParentDigest.png" alt="Riley's Weekly Digest sample: problems attempted, stars earned, highest level, adventures this week, and a weekly summary">
+        <p class="email-dialog-caption">Activity highlights only. One-click unsubscribe. Always.</p>
+    </dialog>
+
+    <script>
+        // Make all reveals visible immediately for better compatibility
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+        // Scroll reveal with IntersectionObserver
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Sample email dialog: close on backdrop click
+        const emailDialog = document.getElementById('emailDialog');
+        if (emailDialog) {
+            emailDialog.addEventListener('click', (e) => {
+                if (e.target === emailDialog) emailDialog.close();
+            });
+        }
+    </script>
+</body>
+</html>
