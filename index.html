@@ -699,63 +699,50 @@
 
         .screenshot-card .caption { margin-top: 16px; font-weight: 700; color: white; font-size: 0.95rem; text-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 
-        /* ---------- FOR PARENTS ---------- */
+        /* ---------- THE PARENT HUB ---------- */
         .parents { background: var(--cream); }
 
-        .parents-grid {
+        .parents-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .parents-header .section-label { color: var(--pink); }
+        .parents-header .section-subtitle { margin: 0 auto; }
+
+        .parents-hub-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 48px;
             align-items: center;
         }
 
-        .parents-content .section-label { color: var(--pink); }
-
-        .parents-list {
+        .parents-hub-cards {
             display: flex;
             flex-direction: column;
-            gap: 28px;
-            margin-top: 36px;
+            gap: 20px;
         }
 
-        .parents-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-        }
+        .parents-hub-cards .feature-card { background: white; box-shadow: var(--shadow-card); }
+        .parents-hub-cards .feature-card:nth-child(1)::before { background: var(--pink); }
+        .parents-hub-cards .feature-card:nth-child(2)::before { background: var(--teal); }
+        .parents-hub-cards .feature-card:nth-child(3)::before { background: var(--purple); }
+        .parents-hub-cards .feature-card:nth-child(1) .feature-icon-wrap { background: rgba(255, 94, 138, 0.1); }
+        .parents-hub-cards .feature-card:nth-child(2) .feature-icon-wrap { background: rgba(29, 181, 160, 0.1); }
+        .parents-hub-cards .feature-card:nth-child(3) .feature-icon-wrap { background: rgba(123, 97, 255, 0.1); }
 
-        .parents-item-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
+        .parents-hub-visual { display: flex; align-items: center; justify-content: center; }
 
-        .parents-item:nth-child(1) .parents-item-icon { background: rgba(255, 94, 138, 0.1); }
-        .parents-item:nth-child(2) .parents-item-icon { background: rgba(29, 181, 160, 0.1); }
-        .parents-item:nth-child(3) .parents-item-icon { background: rgba(255, 107, 53, 0.1); }
-        .parents-item:nth-child(4) .parents-item-icon { background: rgba(123, 97, 255, 0.1); }
-
-        .parents-item h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
-        .parents-item p { color: var(--ink-muted); font-size: 0.93rem; font-weight: 500; }
-
-        .parents-visual { display: flex; align-items: center; justify-content: center; }
-
-        .trust-card {
+        .hub-shot {
             background: white;
             border-radius: var(--radius-lg);
-            padding: 48px 40px;
             box-shadow: var(--shadow-float);
-            text-align: center;
-            max-width: 380px;
+            overflow: hidden;
             position: relative;
+            max-width: 420px;
         }
 
-        .trust-card::before {
+        .hub-shot::before {
             content: '';
             position: absolute;
             top: -3px; left: -3px; right: -3px; bottom: -3px;
@@ -765,9 +752,15 @@
             opacity: 0.3;
         }
 
-        .trust-shield { font-size: 3.5rem; margin-bottom: 20px; }
-        .trust-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
-        .trust-card p { color: var(--ink-muted); font-weight: 500; font-size: 0.95rem; margin-bottom: 24px; }
+        .parents-cta-row {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .parents-trust-strip { margin-top: 28px; }
 
         .trust-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
@@ -782,6 +775,60 @@
             align-items: center;
             gap: 6px;
         }
+
+        .parents-trust-strip .trust-badge { background: white; box-shadow: var(--shadow-card); }
+
+        /* ---------- SAMPLE EMAIL DIALOG ---------- */
+        .email-dialog {
+            border: none;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: min(560px, calc(100vw - 48px));
+            background: white;
+            box-shadow: var(--shadow-float);
+            margin: auto;
+        }
+
+        .email-dialog::backdrop {
+            background: rgba(45, 34, 53, 0.55);
+            backdrop-filter: blur(4px);
+        }
+
+        .email-dialog h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            padding-right: 44px;
+        }
+
+        .email-dialog img {
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+        }
+
+        .email-dialog-caption {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .email-dialog-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: var(--cream);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--ink);
+            transition: background 0.2s;
+        }
+
+        .email-dialog-close:hover { background: var(--cream-dark); }
 
         /* ---------- STORY ---------- */
         .story { background: white; }
@@ -1264,8 +1311,8 @@
             .hero-phone { width: 240px; height: 480px; }
             .hero-mascot { right: -40px; bottom: 60px; width: 120px; height: 120px; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .parents-grid { grid-template-columns: 1fr; gap: 48px; }
-            .parents-visual { order: -1; }
+            .parents-hub-grid { grid-template-columns: 1fr; gap: 48px; }
+            .parents-hub-visual { order: -1; }
             .topics-grid { grid-template-columns: 1fr; }
             .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -1318,7 +1365,7 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
-                <li><a href="#parents">Parents</a></li>
+                <li><a href="/parents/">Parents</a></li>
                 <li><a href="#story">Our Story</a></li>
                 <li><a href="privacy.html">Privacy</a></li>
                 <li><a href="try.html" class="btn btn-secondary nav-cta" style="margin-right: 8px;">Try Free</a></li>
@@ -1334,7 +1381,7 @@
     <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
         <button class="nav-mobile-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
         <a href="#features" onclick="document.getElementById('mobileMenu').classList.remove('open')">Features</a>
-        <a href="#parents" onclick="document.getElementById('mobileMenu').classList.remove('open')">Parents</a>
+        <a href="/parents/">Parents</a>
         <a href="#story" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Story</a>
         <a href="privacy.html">Privacy</a>
         <a href="try.html" class="btn btn-secondary">Try Free</a>
@@ -1421,32 +1468,36 @@
         </div>
     </section>
 
-    <!-- For Parents -->
+    <!-- The Parent Hub -->
     <section class="parents section" id="parents" aria-labelledby="parents-title">
-        <div class="container parents-grid">
-            <div class="parents-content">
-                <div class="section-label reveal">FOR PARENTS</div>
-                <h2 class="section-title reveal reveal-delay-1" id="parents-title">A space you can trust</h2>
-                <p class="section-subtitle reveal reveal-delay-2">Built with your child's safety and wellbeing at the center of every decision.</p>
-                <div class="parents-list">
-                    <div class="parents-item reveal reveal-delay-1"><div class="parents-item-icon" aria-hidden="true">🔒</div><div><h4>Safe &amp; Secure</h4><p>No ads, no in-app purchases, no external links. Just pure learning in a protected environment.</p></div></div>
-                    <div class="parents-item reveal reveal-delay-2"><div class="parents-item-icon" aria-hidden="true">👁️</div><div><h4>Privacy First</h4><p>We don't collect personal information. Your child's data stays where it belongs — private.</p></div></div>
-                    <div class="parents-item reveal reveal-delay-3"><div class="parents-item-icon" aria-hidden="true">📈</div><div><h4>Real Results</h4><p>Watch your child's confidence and math skills grow through hands-on visual practice.</p></div></div>
-                    <div class="parents-item reveal reveal-delay-4"><div class="parents-item-icon" aria-hidden="true">🎓</div><div><h4>Curriculum Aligned</h4><p>Content designed to complement school learning, homework, and standardized test prep.</p></div></div>
-                </div>
+        <div class="container">
+            <div class="parents-header">
+                <div class="section-label reveal">THE PARENT HUB</div>
+                <h2 class="section-title reveal reveal-delay-1" id="parents-title">See the magic — without hovering</h2>
+                <p class="section-subtitle reveal reveal-delay-2">A warm weekly snapshot of your child's math journey. Two minutes, no scores, no surveillance — just enough to celebrate the wins and know where to help.</p>
             </div>
-            <div class="parents-visual reveal">
-                <div class="trust-card">
-                    <div class="trust-shield" aria-hidden="true">🛡️</div>
-                    <h3>Built for Kids</h3>
-                    <p>Every interaction is designed to be safe, supportive, and age-appropriate.</p>
-                    <div class="trust-badges">
-                        <span class="trust-badge">🚫 No Ads</span>
-                        <span class="trust-badge">🔒 No Data Collection</span>
-                        <span class="trust-badge">💳 No In-App Purchases</span>
-                        <span class="trust-badge">🔗 No External Links</span>
+            <div class="parents-hub-grid">
+                <div class="parents-hub-cards">
+                    <div class="feature-card reveal reveal-delay-1"><div class="feature-icon-wrap" aria-hidden="true">👀</div><h3>Your week at a glance</h3><p>Stars earned, problems solved, levels reached, and a day-by-day view — with "Coach Maya's read" summarizing the week in plain language.</p></div>
+                    <div class="feature-card reveal reveal-delay-2"><div class="feature-icon-wrap" aria-hidden="true">🌱</div><h3>Encouragement, not a report card</h3><p>Skills show as <em>Strong, Growing,</em> or <em>Let's practice</em> as your child plays. No grades, no red ink, none of the "weak / behind" language kids dread.</p></div>
+                    <div class="feature-card reveal reveal-delay-3"><div class="feature-icon-wrap" aria-hidden="true">📬</div><h3>An optional Monday email</h3><p>Get a short progress recap each week — but only after you confirm from your own inbox. Activity highlights only, one-click unsubscribe, anytime.</p></div>
+                </div>
+                <div class="parents-hub-visual reveal reveal-delay-2">
+                    <div class="hub-shot">
+                        <img src="images/ParentHub.png" alt="Parent Hub weekly dashboard showing stars earned, problems solved, day-by-day activity, and Coach Maya's read">
                     </div>
                 </div>
+            </div>
+            <div class="parents-cta-row reveal reveal-delay-3">
+                <a href="/parents/" class="btn btn-primary">Explore the Parent Hub →</a>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('emailDialog').showModal()">See a sample weekly email</button>
+            </div>
+            <div class="trust-badges parents-trust-strip reveal reveal-delay-4">
+                <span class="trust-badge">🚫 No Ads</span>
+                <span class="trust-badge">🔒 No Data Collection</span>
+                <span class="trust-badge">💳 No In-App Purchases</span>
+                <span class="trust-badge">🔗 No External Links</span>
+                <span class="trust-badge">✅ Parent-confirmed emails</span>
             </div>
         </div>
     </section>
@@ -1507,7 +1558,7 @@
             <div class="roadmap-grid">
                 <div class="roadmap-item reveal"><div class="roadmap-emoji" aria-hidden="true">✖️</div><p>Multiplication</p></div>
                 <div class="roadmap-item reveal reveal-delay-1"><div class="roadmap-emoji" aria-hidden="true">🍕</div><p>Fractions</p></div>
-                <div class="roadmap-item reveal reveal-delay-2"><div class="roadmap-emoji" aria-hidden="true">👨‍👩‍👧</div><p>Parent Dashboard</p></div>
+                <div class="roadmap-item reveal reveal-delay-2"><div class="roadmap-emoji" aria-hidden="true">👧👦</div><p>Multi-Child View</p></div>
                 <div class="roadmap-item reveal reveal-delay-3"><div class="roadmap-emoji" aria-hidden="true">🏅</div><p>Badges</p></div>
                 <div class="roadmap-item reveal reveal-delay-4"><div class="roadmap-emoji" aria-hidden="true">📴</div><p>Offline Mode</p></div>
                 <div class="roadmap-item reveal reveal-delay-5"><div class="roadmap-emoji" aria-hidden="true">🎨</div><p>More Art Styles</p></div>
@@ -1624,7 +1675,7 @@
                 <ul class="footer-links">
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="mailto:support@mathmagicfun.com">Contact Us</a></li>
-                    <li><a href="#parents">For Parents</a></li>
+                    <li><a href="/parents/">For Parents</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
@@ -1632,6 +1683,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Sample Weekly Email Dialog -->
+    <dialog class="email-dialog" id="emailDialog" aria-labelledby="email-dialog-title">
+        <button type="button" class="email-dialog-close" aria-label="Close preview" autofocus onclick="document.getElementById('emailDialog').close()">✕</button>
+        <h3 id="email-dialog-title">A sample weekly digest</h3>
+        <img src="images/ParentDigest.png" alt="Riley's Weekly Digest sample: problems attempted, stars earned, highest level, adventures this week, and a weekly summary">
+        <p class="email-dialog-caption">Activity highlights only. One-click unsubscribe. Always.</p>
+    </dialog>
 
     <script>
         // Make all reveals visible immediately for better compatibility
@@ -1662,6 +1721,14 @@
                 }
             });
         });
+
+        // Sample email dialog: close on backdrop click
+        const emailDialog = document.getElementById('emailDialog');
+        if (emailDialog) {
+            emailDialog.addEventListener('click', (e) => {
+                if (e.target === emailDialog) emailDialog.close();
+            });
+        }
 
         // Beta form submission handler
         const betaForm = document.getElementById('betaForm');
