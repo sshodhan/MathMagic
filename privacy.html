@@ -522,7 +522,7 @@
         <div class="container">
             <div class="hero-badge">🔒 Your Privacy Matters</div>
             <h1>Privacy Policy</h1>
-            <p>Last Updated: January 25, 2026</p>
+            <p>Last Updated: June 12, 2026</p>
         </div>
     </section>
 
@@ -532,54 +532,102 @@
             <div class="content-inner">
 
                 <h2>Introduction</h2>
-                <p>Welcome to Math Magic, operated by AuraAgents LLC ("we," "our," or "us"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application Math Magic (the "App").</p>
-                <p>Please read this Privacy Policy carefully. By using the App, you agree to the collection and use of information in accordance with this policy.</p>
+                <p>Welcome to Math Magic, operated by AuraAgents LLC ("we," "our," or "us"). This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use the Math Magic Android app, the Math Magic web app, or this website mathmagicfun.info, including its beta signup form (together, the "Services").</p>
+                <p>Please read this Privacy Policy carefully. By using the Services, you agree to the collection and use of information in accordance with this policy.</p>
+                <div class="highlight-box">
+                    <p><strong>The short version:</strong> we collect only what learning needs — practice activity and the signals that help the coach personalize. No ads, no ad tracking, and your data is never sold. Kids can use the app without an account, and parent emails are used only for the progress digest you opt into.</p>
+                </div>
 
                 <h2>Information We Collect</h2>
 
-                <h3>Information Automatically Collected</h3>
-                <p>When you use our App, we may automatically collect certain information, including:</p>
+                <h3>Learning Data (Information Your Child Provides)</h3>
                 <ul>
-                    <li><strong>Device Information:</strong> Device type, operating system version, unique device identifiers</li>
-                    <li><strong>Usage Data:</strong> App features used, time spent in the App, interaction patterns</li>
-                    <li><strong>Log Data:</strong> Error logs and performance data to improve App stability</li>
+                    <li><strong>Name and Username:</strong> A first name or nickname your child chooses, and a friendly username. Creating an account is optional — without one, all progress stays on the device.</li>
+                    <li><strong>Learning Progress:</strong> Practice attempts, answers, levels, stars, streaks, puzzle completions, and achievements</li>
+                    <li><strong>AI Coach Interactions:</strong> The math question being worked on, your child's answers, and which hints or explanations were used (see "AI Math Coach" below)</li>
+                    <li><strong>Personalization Signals:</strong> Signals we derive from practice to help the coach adapt — a mastery estimate per concept, recurring error patterns, how often help is used, average attempts to success, and a preferred learning style (text, visual, or worked examples)</li>
+                    <li><strong>Creations and Preferences:</strong> Avatar choices, whiteboard drawings your child saves or shares, worksheet photos your child chooses to scan, and app settings</li>
+                </ul>
+                <p>For signed-in accounts, learning data is stored in our backend (Supabase) under a random account ID so progress can sync. Without an account, it is stored only on the device.</p>
+
+                <h3>Information Parents Provide</h3>
+                <ul>
+                    <li><strong>Parent Setup:</strong> If you set up the Parent Hub, we collect your first name, your relationship to the learner, and your contact preference. This is saved on your device and synced to our backend so it can power the weekly digest.</li>
+                    <li><strong>Email Address:</strong> If you subscribe to the weekly progress digest, we store your email address with your child's account (see "Parent Emails &amp; Weekly Digest" below).</li>
+                    <li><strong>Beta Signup:</strong> If you join the beta through this website, the email you submit is processed by Netlify (our website host) and used only to contact you about beta access.</li>
                 </ul>
 
-                <h3>Information You Provide</h3>
-                <p>We may collect information you voluntarily provide, such as:</p>
+                <h3>Information Automatically Collected</h3>
                 <ul>
-                    <li><strong>Learning Progress:</strong> Math problem completion, scores, and achievements</li>
-                    <li><strong>Preferences:</strong> App settings and customization choices</li>
+                    <li><strong>Usage Analytics:</strong> Events like sessions started, features used, and problems answered, linked to a random account ID (signed in) or a random anonymous ID stored on the device (not signed in). We use Statsig for this.</li>
+                    <li><strong>Error and Performance Logs:</strong> Error messages, stack traces, and basic device details (browser/user agent, platform, screen size) so we can fix problems</li>
+                    <li><strong>Bug Reports:</strong> If you send a bug report from the app, it includes a screenshot, recent in-app activity logs, and device details</li>
                 </ul>
+                <p>We do not collect email addresses, phone numbers, photos (other than worksheet scans your child initiates), contacts, or precise location from children. We do not use advertising identifiers or tracking cookies.</p>
 
                 <h2>How We Use Your Information</h2>
-                <p>We use the collected information for the following purposes:</p>
                 <ul>
-                    <li><strong>Provide and Maintain the App:</strong> Deliver the core math learning experience</li>
+                    <li><strong>Provide and Maintain the App:</strong> Deliver the core math learning experience and sync progress for accounts</li>
+                    <li><strong>Personalize the Coach:</strong> Use the personalization signals above (mastery estimates, error patterns, help usage, preferred learning style) to adapt hints, explanations, and question difficulty</li>
+                    <li><strong>Parent Updates:</strong> Send the weekly progress digest you opt into, and show progress in the Parent Hub</li>
                     <li><strong>Improve the App:</strong> Analyze usage patterns to enhance features and performance</li>
-                    <li><strong>Personalization:</strong> Customize the learning experience based on progress</li>
                     <li><strong>Technical Support:</strong> Diagnose and fix technical issues</li>
                 </ul>
+                <p>We never use your information for advertising, and we never sell it. See "No Ads, No Selling Data" below.</p>
+
+                <h2>AI Math Coach</h2>
+                <p>The AI Math Coach is powered by third-party AI providers. To generate a hint, explanation, practice question, or visual, our server sends the relevant context to the provider:</p>
+                <ul>
+                    <li><strong>OpenAI</strong> (coaching replies, practice-question suggestions, and worksheet feedback): receives the math question, your child's answer, the attempt number, the concept being practiced, the coach conversation for the current question, and — when personalization is active — aggregate learning signals such as the mastery estimate and recurring error patterns. For worksheet feedback, the worksheet photo is sent for analysis. OpenAI Privacy Policy: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">openai.com/policies/privacy-policy</a></li>
+                    <li><strong>Anthropic</strong> (visual explanations): receives the math question, your child's answer, and the concept, to generate a visual walkthrough. Anthropic Privacy Policy: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a></li>
+                </ul>
+                <ul>
+                    <li>We never send your child's name, username, email, or account ID to AI providers.</li>
+                    <li>Under these providers' API terms, content sent through the API is not used to train their models. Providers may retain API data for a short period (for example, up to 30 days) for safety and abuse monitoring under their policies.</li>
+                    <li>Coach conversations are not saved after the question ends; we keep only the learning events described above (e.g., whether a hint was used), not chat transcripts.</li>
+                </ul>
+
+                <h2>Parent Emails &amp; Weekly Digest</h2>
+                <ul>
+                    <li><strong>Double Opt-In:</strong> When you enter your email, we send one confirmation message. You receive nothing further until you click the confirmation link.</li>
+                    <li><strong>What's in the Digest:</strong> A Monday email with your child's first name, problems solved, stars earned, the adventures practiced that week, and a link to a fuller progress report page.</li>
+                    <li><strong>Unsubscribe Anytime:</strong> Every email includes a one-click unsubscribe link — no sign-in needed.</li>
+                    <li><strong>Delivery:</strong> Digest and confirmation emails are delivered through Resend, our email service provider.</li>
+                </ul>
+
+                <h2>Sharing Features</h2>
+                <p>Some features let your family share progress — each is initiated by you or your child, never automatic:</p>
+                <ul>
+                    <li><strong>Share My Week:</strong> Opens your device's share sheet with a short text summary and a link to the weekly progress report page. Anyone who has that link can view the report.</li>
+                    <li><strong>Copy Progress Preview:</strong> Copies a text summary to your clipboard; nothing is sent anywhere by the app.</li>
+                    <li><strong>Whiteboard Sharing:</strong> When your child shares a whiteboard drawing, the image is uploaded to our cloud storage so it can appear in the activity feed and weekly digest. Shared drawings are viewable by anyone who has the link.</li>
+                </ul>
+
+                <h2>No Ads, No Selling Data</h2>
+                <div class="highlight-box">
+                    <p>Math Magic contains no advertising and no ad SDKs. We do not sell personal information, we do not share it with data brokers or advertisers, and we do not use it for advertising or marketing profiles — for children or parents. The only third parties that receive data are the service providers listed below, and only so the app can work.</p>
+                </div>
 
                 <h2>Data Storage and Security</h2>
 
                 <h3>Third-Party Services</h3>
-                <p>Our App uses the following third-party services:</p>
+                <p>The Services use the following providers, each only for the purpose described:</p>
                 <ul>
-                    <li><strong>Supabase:</strong> For backend data storage and authentication
-                        <ul>
-                            <li>Supabase Privacy Policy: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">https://supabase.com/privacy</a></li>
-                            <li>Data is stored securely with encryption at rest and in transit</li>
-                        </ul>
-                    </li>
+                    <li><strong>Supabase</strong> — backend database and file storage (learning progress, accounts, avatars, shared whiteboards, parent profiles). <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>OpenAI</strong> — AI coaching responses, practice-question suggestions, and worksheet analysis. <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Anthropic</strong> — AI visual explanations. <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Resend</strong> — delivery of parent confirmation and weekly digest emails. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Statsig</strong> — usage analytics and feature flags. <a href="https://www.statsig.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Vercel</strong> — hosting for the web app and server logs. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Netlify</strong> — hosting for this website and the beta signup form. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
                 </ul>
 
                 <h3>Data Security</h3>
                 <p>We implement appropriate technical and organizational security measures to protect your information, including:</p>
                 <ul>
                     <li>HTTPS encryption for all data transmission</li>
-                    <li>Secure backend infrastructure</li>
-                    <li>Regular security assessments</li>
+                    <li>Encryption at rest in our backend infrastructure</li>
+                    <li>AI requests made server-side, so API credentials never reach your device</li>
                 </ul>
 
                 <h2>Children's Privacy</h2>
@@ -587,12 +635,20 @@
                     <p>Math Magic is designed for children and families. We are committed to complying with the Children's Online Privacy Protection Act (COPPA) and similar regulations worldwide.</p>
                 </div>
                 <ul>
-                    <li>We do not knowingly collect personal information from children under 13 without parental consent</li>
-                    <li>Parents/guardians can review, delete, or refuse further collection of their child's information by contacting us</li>
+                    <li>From children we collect only: a first name or nickname, a username, learning progress, coach interactions and derived personalization signals, avatar choices, and creations they choose to save or share (whiteboard drawings, worksheet scans)</li>
+                    <li>We do not collect email addresses, phone numbers, or precise location from children, and we do not knowingly collect more personal information than is reasonably necessary for the learning experience</li>
+                    <li>Children can use the app without an account, in which case progress stays on the device</li>
+                    <li>Parents/guardians can review, delete, or refuse further collection of their child's information at any time by contacting us at <a href="mailto:support@mathmagicfun.com">support@mathmagicfun.com</a></li>
                 </ul>
 
-                <h2>Data Retention</h2>
-                <p>We retain your information only for as long as necessary to provide the App's services and fulfill the purposes described in this Privacy Policy. Learning progress data may be retained to allow continued use of the App.</p>
+                <h2>Data Retention and Deletion</h2>
+                <ul>
+                    <li><strong>Learning data</strong> is kept for as long as the account is active, so your child can pick up where they left off.</li>
+                    <li><strong>Reset in app:</strong> The in-app "reset progress" option deletes adventure progress, puzzle completions, and theme unlocks from our servers for that account.</li>
+                    <li><strong>Full deletion:</strong> To delete an account and all associated data — including progress, coach learning events, shared whiteboards, and parent profile information — email us at <a href="mailto:support@mathmagicfun.com">support@mathmagicfun.com</a>. We complete verified deletion requests within 30 days.</li>
+                    <li><strong>Digest emails:</strong> Unsubscribing stops all digest emails immediately; you can also ask us to remove your email address entirely.</li>
+                    <li><strong>Logs and bug reports</strong> are kept only as long as needed for debugging and stability work.</li>
+                </ul>
 
                 <h2>Your Rights</h2>
                 <p>Depending on your location, you may have the following rights:</p>
