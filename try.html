@@ -100,23 +100,36 @@
             color: white;
         }
 
-        .nav-btn {
+        .nav-links a[aria-current="page"] { color: var(--orange); }
+
+        .nav-cta {
             padding: 10px 20px;
             border-radius: 60px;
             font-family: 'Baloo 2', cursive;
             font-size: 0.9rem;
             font-weight: 700;
-            background: var(--ink);
-            color: white;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        .nav-cta:hover { transform: translateY(-2px); }
+
+        .nav-cta-secondary {
+            background: white;
+            color: var(--ink);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-right: 8px;
         }
+
+        .nav-cta-secondary:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+
+        .nav-cta-primary {
+            background: var(--orange);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.35);
+        }
+
+        .nav-cta-primary:hover { box-shadow: 0 6px 16px rgba(255,107,53,0.45); }
 
         .nav-mobile-toggle {
             display: none;
@@ -365,8 +378,11 @@
             <ul class="nav-links">
                 <li><a href="index.html#features">Features</a></li>
                 <li><a href="/parents/">Parents</a></li>
+                <li><a href="index.html#story">Our Story</a></li>
                 <li><a href="/blog/">Blog</a></li>
-                <li><a href="beta.html" class="nav-btn">Join Beta</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="beta.html" class="nav-cta nav-cta-secondary">Join Beta</a></li>
+                <li><a href="try.html" class="nav-cta nav-cta-primary" aria-current="page">Try Free</a></li>
             </ul>
             <button class="nav-mobile-toggle" aria-label="Menu" onclick="window.location.href='index.html'">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
