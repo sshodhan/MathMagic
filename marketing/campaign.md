@@ -1,8 +1,17 @@
 # Math Magic — User Recruitment Campaign
 
-**Audience:** Parents of elementary-age kids (grades 1–5, ages 6–12)
+**Audience:** Parents of upper-elementary kids (grades 3–5, ages 8–12; app curriculum is Grade-5-centered)
 **Goal:** Drive web-app trials (`https://sshodhan.vercel.app/`) and Android beta signups (`/beta.html`)
 **Site:** https://mathmagicfun.info/
+
+> ✅ **Facts verified against the app repo** (`sshodhan/v0-math-app-for-kids`, 2026-07-18):
+> ages **8–12**, Grade-5-centered Common Core/WA OSPI curriculum (Grade 6 built but gated off);
+> **8 adventures × 10 levels** (Number Sense Masters, Decimal Discoverers, Division Champions,
+> Fraction Heroes, Decimal Multiplication Masters, Decimal Division Quest, Word Problem Warriors,
+> Fraction Factory) plus arcade games; per-level **difficulty scaling** is real; the coach is
+> **Coach Maya**; Parent Hub labels are exactly **Strong / Growing / Let's practice**; local-first —
+> kids can play with **no account**; ships as web app + **Android WebView** (no iOS workstream);
+> privacy baseline in sync at `2026-06-12.1`. Do not market 1st–2nd grade content or Grade 6.
 
 > ⚠️ **Claim compliance:** All copy in this doc uses only the approved claim vocabulary from
 > `.github/claude-review.md` §2. Before publishing any NEW copy anywhere (ads, social, email),
@@ -24,7 +33,7 @@
 
 ## 2. Audience & personas
 
-1. **The Homework Referee** — parent of a 3rd–4th grader stuck on multiplication/fractions; searches "how to help my child with multiplication", "fractions for 4th graders". Pain: nightly battles. Hook: the AI coach explains patiently, visually, endlessly.
+1. **The Homework Referee** — parent of a 4th–5th grader stuck on long division and fractions; searches "long division help", "fractions for 4th graders", "decimal practice 5th grade". Pain: nightly battles. Hook: Coach Maya explains patiently, visually, endlessly.
 2. **The Screen-Time Skeptic** — wants screen time to be worth something; deeply privacy-conscious. Pain: ad-riddled "free" apps. Hook: No ads, no in-app purchases, Learning Data Only, COPPA-committed.
 3. **The Confidence Builder** — child says "I'm bad at math." Pain: math anxiety. Hook: growth-framed feedback ("Strong · Growing · Let's practice"), never "weak/failing/behind".
 
@@ -49,7 +58,7 @@
 
 ### B. Content / blog (Substack + /blog/)
 Weekly parent-facing posts, cross-linked to /grades/:
-- "Why 3rd grade is the year kids decide if they're 'a math person'"
+- "Why upper elementary is when kids decide if they're 'a math person'"
 - "Long division without tears: a visual walkthrough"
 - "5 signs your child has math anxiety (and what actually helps)"
 - "What 'no ads' really means in a kids app" (privacy pillar — use approved wording only)
@@ -63,7 +72,7 @@ Weekly parent-facing posts, cross-linked to /grades/:
 Pins: "Math games by grade" (links to /grades/), "Fraction help for 4th graders", "Screen time that teaches". Pinterest SEO compounds with the same keywords as web SEO.
 
 ### E. Paid social (small test budget)
-$10–20/day Facebook/Instagram test: audience = parents of children 6–11, interests: elementary education, Khan Academy Kids, Prodigy. Creative variants in §5.1. Optimize to web-app clicks; kill anything above ~$1.50 CPC after week 2.
+$10–20/day Facebook/Instagram test: audience = parents of children 8–12, interests: elementary education, Khan Academy Kids, Prodigy. Creative variants in §5.1. Optimize to web-app clicks; kill anything above ~$1.50 CPC after week 2.
 
 ### F. Beta community loop
 Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps families engaged; ask happy parents for a share/review in email 3.
@@ -73,14 +82,14 @@ Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps
 ### 5.1 Facebook/Instagram ads (3 variants)
 
 **Ad 1 — Homework Referee**
-> Multiplication meltdowns? There's a gentler way.
-> Math Magic turns 3rd-grade math into visual adventures — with a friendly AI coach that explains it again (and again) without ever losing patience.
+> Long division meltdowns? There's a gentler way.
+> Math Magic turns 4th- and 5th-grade math into visual adventures — with Coach Maya, a friendly AI coach that explains it again (and again) without ever losing patience.
 > ✅ No ads ✅ No in-app purchases ✅ Free to try in your browser
-> **CTA:** Play Free → mathmagicfun.info/grades/
+> **CTA:** Play Free → web app URL with UTMs (see §9)
 
 **Ad 2 — Screen-Time Skeptic**
 > Screen time you don't have to feel guilty about.
-> Math Magic is built for kids 6–12: no ads, no in-app purchases, and Learning Data Only — never sold, never used for ads, never shared with advertisers.
+> Math Magic is built for kids 8–12 (grades 3–5): no ads, no in-app purchases, and Learning Data Only — never sold, never used for ads, never shared with advertisers.
 > **CTA:** See why parents trust it → mathmagicfun.info/parents/
 
 **Ad 3 — Confidence Builder**
@@ -89,20 +98,20 @@ Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps
 > **CTA:** Try it free → mathmagicfun.info/
 
 ### 5.2 Pinterest pin descriptions
-- "Math games by grade: what kids learn in 1st–5th grade and how to make practice fun. Free to play in your browser — no ads, no in-app purchases. #elementarymath #mathgames"
+- "Math games by grade: what kids learn in 3rd–5th grade and how to make practice fun. Free to play in your browser — no ads, no in-app purchases. #elementarymath #mathgames"
 - "Fractions clicking ≠ fractions memorized. Visual fraction games for 3rd–5th graders with a patient AI coach. #4thgrademath #mathhelp"
 
 ### 5.3 Reddit post (founder voice, r/Parenting)
 > **Title:** I built a math app for my elementary schooler because every "free" one was full of ads — sharing it here
 >
-> Every math app we tried was either a worksheet in disguise or an ad machine. So we built Math Magic: visual math adventures for ages 6–12 with a friendly AI coach. It's free to play in the browser (no signup), there are no ads and no in-app purchases, and we collect only what learning needs — never sold, never used for ads, never shared with advertisers. There's also an optional Parent Hub that sends a short, growth-framed weekly recap. Would love honest feedback from other parents: https://mathmagicfun.info/
+> Every math app we tried was either a worksheet in disguise or an ad machine. So we built Math Magic: visual math adventures for upper-elementary kids (ages 8–12) with a friendly AI coach. It's free to play in the browser (no signup), there are no ads and no in-app purchases, and we collect only what learning needs — never sold, never used for ads, never shared with advertisers. There's also an optional Parent Hub that sends a short, growth-framed weekly recap. Would love honest feedback from other parents: https://mathmagicfun.info/
 
 ### 5.4 School / PTA newsletter blurb
-> **Free math practice kids actually enjoy** — Math Magic offers visual math games for grades 1–5 (number sense, multiplication, fractions, long division) with a friendly AI coach. No ads, no in-app purchases, and COPPA-committed. Families can play free in any browser at mathmagicfun.info — no signup needed to start.
+> **Free math practice kids actually enjoy** — Math Magic offers visual math games for grades 3–5 (number sense, long division, fractions, decimals, word problems) with a friendly AI coach. No ads, no in-app purchases, and COPPA-committed. Families can play free in any browser at mathmagicfun.info — no signup needed to start.
 
 ### 5.5 Organic social posts (X/Instagram, rotate weekly)
 1. "Kids don't just need math explained — they need to visualize it. That's the whole idea behind Math Magic. 🎨➗ mathmagicfun.info"
-2. "3rd grade is the multiplication year. It's also the year many kids decide math 'isn't for them.' Let's change that. → mathmagicfun.info/grades/#grade-3"
+2. "4th grade is the long-division year. It's also the year many kids decide math 'isn't for them.' Let's change that. → mathmagicfun.info/grades/#grade-4"
 3. "What's in our app: math adventures, a patient AI coach, stars to earn. What's not: ads, in-app purchases. → mathmagicfun.info/parents/"
 4. "Parent Hub = your child's math week in 2 minutes. Growth-framed, never graded. → mathmagicfun.info/parents/"
 
@@ -116,7 +125,7 @@ Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps
 
 ## 7. SEO work shipped in this campaign (this repo)
 
-- **New `/grades/` pillar page** — grade-by-grade (1st–5th) content targeting "math games for [N]th graders" queries, with FAQPage + BreadcrumbList schema and CTAs to the web app and beta.
+- **New `/grades/` pillar page** — grade-by-grade (3rd–5th) content targeting "math games for [N]th graders" and "long division practice" queries, naming the app's real adventures, with FAQPage + BreadcrumbList schema and CTAs to the web app and beta.
 - **Homepage** — title/description/keywords now target "elementary math games"; added Organization + WebSite JSON-LD.
 - **Internal linking** — "Grades" added to nav and footers site-wide.
 - **sitemap.xml** — /grades/ added; lastmod refreshed.
@@ -138,7 +147,16 @@ Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps
 
 ## 9. Measurement
 
-**UTM convention:** `?utm_source={reddit|facebook|pinterest|newsletter|substack}&utm_medium={organic|paid|email}&utm_campaign=parents-launch-2026q3`
-- Search: Google Search Console (impressions/clicks for "grade" queries).
-- On-site: Netlify Analytics page views; beta signups via Netlify Forms count.
-- Weekly 15-minute review: signups by source, CPC on paid, top organic queries.
+**The app already has first-party, COPPA-safe acquisition attribution built in**
+(`docs/ACQUISITION_ATTRIBUTION.md` in the app repo): on first load the web app captures
+`utm_source`/`utm_medium`/`utm_campaign` (first-touch, stored locally; raw ad-click IDs never
+persisted) and stamps them onto the Statsig funnel events `session_started` →
+`onboarding_signup_prompt_shown` → `onboarding_account_created` → `first_problem_answered` →
+`three_problems_completed` → `conversion`. No conversions are ever sent to ad networks.
+
+**How to use it:**
+- **Paid ads and campaign links that should be measured must land on the web app** (`https://sshodhan.vercel.app/?utm_source=...&utm_medium=...&utm_campaign=...`) — the capture runs there, and mathmagicfun.info CTA links do not currently forward UTM params. (Possible future site improvement: append UTMs to the "Try Free" links.)
+- **UTM convention:** `utm_source={reddit|facebook|pinterest|newsletter|substack}`, `utm_medium={organic|paid|email}`, `utm_campaign=parents-launch-2026q3`
+- **Report in Statsig:** segment the funnel by `acquisitionCampaign`/`acquisitionSource`; combine with each ad platform's billing dashboard for cost-per-signup / cost-per-activated-user.
+- **Site-side:** Google Search Console (impressions/clicks for grade + long-division + fraction queries); Netlify Analytics page views; beta signups via Netlify Forms count.
+- Weekly 15-minute review: funnel conversion by source, CPC on paid, top organic queries.
