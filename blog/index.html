@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!-- Math Magic Blog v1.0 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Math Magic</title>
+    <meta name="description" content="Notes, updates, and deep dives from the team building Math Magic — the fun math learning app for kids ages 6-12.">
+    <meta name="theme-color" content="#FF6B35">
+    <meta property="og:title" content="Blog — Math Magic">
+    <meta property="og:description" content="Notes, updates, and deep dives from the team building Math Magic.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mathmagicfun.info/blog/">
+    <meta property="og:image" content="https://mathmagicfun.info/images/og-image.png">
+    <meta property="og:site_name" content="Math Magic">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog — Math Magic">
+    <meta name="twitter:description" content="Notes, updates, and deep dives from the team building Math Magic.">
+    <meta name="twitter:image" content="https://mathmagicfun.info/images/og-image.png">
+    <link rel="canonical" href="https://mathmagicfun.info/blog/">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --orange-light: #FF8F5E;
+            --orange-glow: rgba(255, 107, 53, 0.15);
+            --teal: #1DB5A0;
+            --teal-light: #5FD4C4;
+            --purple: #7B61FF;
+            --purple-light: #A18AFF;
+            --pink: #FF5E8A;
+            --yellow: #FFD23F;
+            --yellow-warm: #FFC107;
+            --cream: #FFFBF5;
+            --cream-dark: #FFF5EB;
+            --ink: #2D2235;
+            --ink-light: #4A4158;
+            --ink-muted: #7E7591;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --radius-xl: 48px;
+            --shadow-card: 0 4px 24px rgba(45, 34, 53, 0.07);
+            --shadow-card-hover: 0 12px 40px rgba(45, 34, 53, 0.12);
+            --shadow-float: 0 20px 60px rgba(45, 34, 53, 0.15);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Baloo 2', cursive;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+        }
+
+        .btn:active { transform: translateY(-1px) scale(0.99); }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--ink);
+            box-shadow: var(--shadow-card);
+        }
+
+        /* ---------- NAV ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 251, 245, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 2px 20px rgba(45, 34, 53, 0.06);
+            padding: 10px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(123, 97, 255, 0.3);
+        }
+
+        .nav-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--orange); }
+        .nav-links a[aria-current="page"] { color: var(--orange); }
+
+        .nav-cta {
+            padding: 10px 22px !important;
+            font-size: 0.95rem !important;
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--ink);
+        }
+
+        .nav-mobile-toggle svg { width: 26px; height: 26px; }
+
+        .nav-mobile-menu { display: none; }
+
+        /* ---------- BLOG ---------- */
+        .blog-hero {
+            padding: 160px 0 60px;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .blog-eyebrow {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .blog-title {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .blog-subtitle {
+            font-size: 1.15rem;
+            color: var(--ink-muted);
+            max-width: 560px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .blog-list {
+            padding: 40px 0 100px;
+        }
+
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .post-card {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+            height: 100%;
+        }
+
+        .post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 16px;
+        }
+
+        .post-source {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 60px;
+            background: var(--orange-glow);
+            color: var(--orange);
+        }
+
+        .post-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--ink);
+        }
+
+        .post-card p {
+            color: var(--ink-light);
+            font-weight: 500;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .post-readmore {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--orange);
+            transition: gap 0.2s ease;
+        }
+
+        .post-card:hover .post-readmore { gap: 12px; }
+
+        /* ---------- FOOTER ---------- */
+        .footer { background: #0D0B14; color: white; padding: 48px 0 36px; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+        .footer-brand { display: flex; align-items: center; gap: 10px; }
+        .footer-logo-icon { width: 32px; height: 32px; border-radius: 10px; overflow: hidden; }
+        .footer-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-brand-name { font-family: 'Baloo 2', cursive; font-size: 1.15rem; font-weight: 700; }
+        .footer-links { display: flex; gap: 28px; list-style: none; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.35);
+            font-weight: 500;
+        }
+
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+
+            .nav-mobile-menu {
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(255, 251, 245, 0.98);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                z-index: 200;
+                display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+                opacity: 0; pointer-events: none; transition: opacity 0.3s;
+            }
+
+            .nav-mobile-menu.open { opacity: 1; pointer-events: all; }
+            .nav-mobile-menu a { font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+
+            .nav-mobile-close {
+                position: absolute; top: 20px; right: 24px;
+                background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--ink); padding: 8px;
+            }
+
+            .blog-hero { padding: 130px 0 40px; }
+            .post-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="/" class="nav-logo" aria-label="Math Magic home">
+                <div class="nav-logo-icon"><img src="/images/icon.png" alt=""></div>
+                Math Magic
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/parents/">Parents</a></li>
+                <li><a href="/#story">Our Story</a></li>
+                <li><a href="/blog/" aria-current="page">Blog</a></li>
+                <li><a href="/privacy.html">Privacy</a></li>
+                <li><a href="/beta.html" class="btn btn-secondary nav-cta" style="margin-right: 8px;">Join Beta</a></li>
+                <li><a href="/try.html" class="btn btn-primary nav-cta">Try Free</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+        <button class="nav-mobile-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+        <a href="/#features" onclick="document.getElementById('mobileMenu').classList.remove('open')">Features</a>
+        <a href="/parents/">Parents</a>
+        <a href="/#story" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Story</a>
+        <a href="/blog/">Blog</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/beta.html" class="btn btn-secondary">Join Beta</a>
+        <a href="/try.html" class="btn btn-primary">Try Free</a>
+    </div>
+
+    <!-- Blog hero -->
+    <header class="blog-hero">
+        <div class="container">
+            <span class="blog-eyebrow">The Math Magic Blog</span>
+            <h1 class="blog-title">Behind the Magic</h1>
+            <p class="blog-subtitle">Notes, updates, and deep dives from the team building Math Magic — how we design fun, effective math learning for kids.</p>
+        </div>
+    </header>
+
+    <!-- Blog posts -->
+    <main class="blog-list">
+        <div class="container">
+            <div class="post-grid">
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-source">✦ Substack</span>
+                    </div>
+                    <h2>Building Math Magic for My 10-Year-Old</h2>
+                    <p>The origin story — why one parent set out to build a math app their own kid would actually want to play, and what shaped it along the way.</p>
+                    <a class="post-readmore" href="https://shodhan.substack.com/p/building-math-magic-for-my-10-year" target="_blank" rel="noopener noreferrer">
+                        Read on Substack →
+                    </a>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-source">✦ Substack</span>
+                    </div>
+                    <h2>Who Grades the Coach?</h2>
+                    <p>How do you know an AI math coach is actually helping? A look at how we measure and hold our AI coaching to a high bar for kids.</p>
+                    <a class="post-readmore" href="https://shodhan.substack.com/p/who-grades-the-coach" target="_blank" rel="noopener noreferrer">
+                        Read on Substack →
+                    </a>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-source">✦ Substack</span>
+                    </div>
+                    <h2>Beyond Static Diagrams: Building Correctness</h2>
+                    <p>A deep dive into how we build correctness into interactive learning — going beyond static diagrams to tools kids can explore and trust.</p>
+                    <a class="post-readmore" href="https://shodhan.substack.com/p/beyond-static-diagrams-building-correctness" target="_blank" rel="noopener noreferrer">
+                        Read on Substack →
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo-icon"><img src="/images/icon.png" alt=""></div>
+                    <span class="footer-brand-name">Math Magic</span>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="mailto:support@mathmagicfun.com">Contact Us</a></li>
+                    <li><a href="/parents/">For Parents</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AuraAgents LLC. All rights reserved. Made with ❤️ for kids who love to learn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+    </script>
+</body>
+</html>
