@@ -27,9 +27,9 @@
 | Objective | Metric | 90-day target |
 |---|---|---|
 | Awareness | Organic impressions (Search Console) | 10k/mo |
-| Acquisition | Web-app launches from site CTAs | 500/mo |
-| Recruitment | Beta signups (Netlify Forms) | 200 total |
-| Retention loop | Parent Hub email opt-ins | 30% of signups |
+| Acquisition | Web-app sessions attributed to the site (`utm_source=mathmagicfun` on `session_started` in Statsig — site links now forward/tag UTMs via `js/attribution.js`) | 500/mo |
+| Recruitment | Beta signups (Netlify Forms) — **total count only; not reportable by source** (the form captures only email, and adding source capture would be a privacy-policy change that must start in the app repo) | 200 total |
+| Retention loop | Parent Hub email opt-ins as a share of **activated app accounts** (`onboarding_account_created` in Statsig) — not of beta-form signups | 30% |
 
 ## 2. Audience & personas
 
@@ -39,11 +39,11 @@
 
 ## 3. Positioning & messaging pillars
 
-**One-liner:** *Math practice kids ask for — with a coach that never runs out of patience and a privacy bar parents can trust.*
+**One-liner:** *Math practice designed to feel like play — with a coach that never runs out of patience and a privacy bar parents can trust.*
 
 | Pillar | Message | Proof point |
 |---|---|---|
-| Fun that works | "Games kids ask to play" | Adventures, stars, avatars, streaks |
+| Fun that works | "Designed to make practice feel like play" | Adventures, stars, avatars, streaks |
 | Sees, not memorizes | "Kids don't just need math explained — they need to visualize it" | Visual number sense, fractions, long division |
 | Coach at their side | "A friendly AI coach with infinite patience" | Step-by-step help, zero judgment |
 | Parent peace of mind | "No ads. No in-app purchases. Learning Data Only." | privacy.html; Parent Hub |
@@ -75,7 +75,7 @@ Pins: "Math games by grade" (links to /grades/), "Fraction help for 4th graders"
 $10–20/day Facebook/Instagram test: audience = parents of children 8–12, interests: elementary education, Khan Academy Kids, Prodigy. Creative variants in §5.1. Optimize to web-app clicks; kill anything above ~$1.50 CPC after week 2.
 
 ### F. Beta community loop
-Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps families engaged; ask happy parents for a share/review in email 3.
+Every beta signup gets the single access email (§6). Parent Hub discovery and any share/feedback asks happen **in-product** (settings screen, Parent Hub itself) and in the digest parents explicitly opt into — not via additional marketing emails, which the current beta consent does not cover.
 
 ## 5. Ready-to-use copy (compliant)
 
@@ -117,20 +117,21 @@ Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps
 
 ## 6. Beta nurture email sequence (3 emails)
 
-**Email 1 — Welcome (day 0):** "You're in! 🎉" — link to web app, 3-step getting started (pick an avatar → first adventure → 10 minutes is plenty). Reassure: no ads, no in-app purchases.
-**Email 2 — Parent Hub (day 4):** "See the week in 2 minutes" — how to turn on the Parent Hub + optional weekly digest (double opt-in, one-click unsubscribe).
-**Email 3 — Share the magic (day 12):** ask for one piece of feedback + one share ("know another family in the math-homework trenches?"). Link to /grades/ as the shareable page.
+**Consent boundary (hard rule):** the beta form's consent — mirrored in `privacy.html` — covers using the email **only to notify the parent about beta access/download**. That is the only email this launch plan sends.
 
-*(Note: sending any new email type must fit what privacy.html describes — parent emails are used only for the digest parents opt into. Route beta-list emails through the existing beta signup consent, and check with the app repo before adding new email streams.)*
+**Email 1 — Beta access (sent when access is granted):** "Your Math Magic beta access is ready" — download/access instructions plus minimal getting-started pointers as part of that notification. Reassure: no ads, no in-app purchases.
+
+**Deferred (do NOT send under current consent):** a Parent Hub onboarding email and a share/feedback ask. Sending these requires, first: (1) a privacy-policy baseline update in the app repo (`sshodhan/v0-math-app-for-kids`) describing the new email use, published per the version handshake, and (2) explicit consent language added to the beta form. Until both ship, Parent Hub promotion and share asks live in-product and in the opt-in weekly digest only.
 
 ## 7. SEO work shipped in this campaign (this repo)
 
 - **New `/grades/` pillar page** — grade-by-grade (3rd–5th) content targeting "math games for [N]th graders" and "long division practice" queries, naming the app's real adventures, with FAQPage + BreadcrumbList schema and CTAs to the web app and beta.
-- **Homepage** — title/description/keywords now target "elementary math games"; added Organization + WebSite JSON-LD.
-- **Internal linking** — "Grades" added to nav and footers site-wide.
+- **Homepage** — title/description/keywords now target grades 3–5 / upper elementary (ages 8–12); added Organization + WebSite JSON-LD.
+- **Internal linking** — "Grades" added to nav, mobile menus, and footers site-wide (including privacy.html). Note: beta.html and try.html use a simplified mobile toggle that routes to the homepage rather than a full mobile menu (pre-existing pattern).
+- **UTM forwarding** — `js/attribution.js` on every page forwards inbound `utm_source`/`utm_medium`/`utm_campaign` onto all web-app links (persisted for the session), and tags ordinary site-to-app launches with a stable referral (`utm_source=mathmagicfun`, `utm_medium=referral`, `utm_campaign=site-<page>`). Explicit UTMs already on a link are never overwritten.
 - **sitemap.xml** — /grades/ added; lastmod refreshed.
 
-**Post-deploy checklist:** submit sitemap in Google Search Console → request indexing for /grades/ → verify FAQ rich results with the Rich Results Test → add Bing Webmaster Tools.
+**Post-deploy checklist:** submit sitemap in Google Search Console → request indexing for /grades/ → validate the structured data parses cleanly (Rich Results Test / Schema.org validator) and confirm the pages get indexed — do **not** expect FAQ rich-result snippets, which Google now reserves for a small set of authoritative sites → add Bing Webmaster Tools → click a site CTA and confirm the web-app URL carries the referral UTMs.
 
 **Future SEO backlog:** per-grade child pages (/grades/3rd-grade-math-games/), blog posts on-site (not just Substack links) for topical authority, parent testimonials with Review schema (once real), backlink outreach to parenting blogs and homeschool resource lists.
 
@@ -138,16 +139,19 @@ Every beta signup gets the nurture sequence (§6); Parent Hub weekly email keeps
 
 | Week | Focus | Actions |
 |---|---|---|
-| 1 | Foundation | Deploy SEO changes, submit sitemap, set up UTM links, baseline metrics |
-| 2 | Content | Publish 2 blog posts (3rd-grade multiplication, privacy explainer), first Pinterest pins |
+| 1 | Foundation | Deploy SEO changes, submit sitemap, verify UTM forwarding on CTA links, baseline metrics |
+| 2 | Content | Publish 2 blog posts (long-division walkthrough, privacy explainer), first Pinterest pins |
 | 3 | Community | Reddit founder post, 3 Facebook groups, send PTA blurb to 5 schools |
-| 4 | Paid test | Launch 3 FB/IG ad variants at $10/day each; publish fraction post |
+| 4 | Paid test | **Gate:** confirm counsel sign-off that campaign-label collection is covered by the current privacy disclosure (open item in app repo) — then launch 3 FB/IG ad variants at $10/day each; publish fraction post |
 | 5 | Optimize | Kill weak ads, double down on winner; second Reddit community; more pins |
-| 6 | Loop | Beta email 3 (share ask), review KPIs, write next-6-week plan |
+| 6 | Loop | Review KPIs, write next-6-week plan (share-ask email only if the consent expansion in §6 has shipped) |
 
 ## 9. Measurement
 
-**The app already has first-party, COPPA-safe acquisition attribution built in**
+**The app has first-party acquisition attribution built in** — shipped **without ad SDKs or
+conversion sharing**; note that confirmation that campaign-label collection is fully covered by
+the current privacy disclosure remains an **open counsel follow-up** in the app repo (see
+`docs/OPEN_WORKSTREAMS.md` → COPPA), and must be closed before the paid-social week begins
 (`docs/ACQUISITION_ATTRIBUTION.md` in the app repo): on first load the web app captures
 `utm_source`/`utm_medium`/`utm_campaign` (first-touch, stored locally; raw ad-click IDs never
 persisted) and stamps them onto the Statsig funnel events `session_started` →
@@ -155,8 +159,10 @@ persisted) and stamps them onto the Statsig funnel events `session_started` →
 `three_problems_completed` → `conversion`. No conversions are ever sent to ad networks.
 
 **How to use it:**
-- **Paid ads and campaign links that should be measured must land on the web app** (`https://sshodhan.vercel.app/?utm_source=...&utm_medium=...&utm_campaign=...`) — the capture runs there, and mathmagicfun.info CTA links do not currently forward UTM params. (Possible future site improvement: append UTMs to the "Try Free" links.)
-- **UTM convention:** `utm_source={reddit|facebook|pinterest|newsletter|substack}`, `utm_medium={organic|paid|email}`, `utm_campaign=parents-launch-2026q3`
-- **Report in Statsig:** segment the funnel by `acquisitionCampaign`/`acquisitionSource`; combine with each ad platform's billing dashboard for cost-per-signup / cost-per-activated-user.
-- **Site-side:** Google Search Console (impressions/clicks for grade + long-division + fraction queries); Netlify Analytics page views; beta signups via Netlify Forms count.
+- **Paid creatives optimized for app trials land directly on the web app** with UTMs: `https://sshodhan.vercel.app/?utm_source=...&utm_medium=paid&utm_campaign=...`. Ads that land on marketing pages (e.g. /parents/) no longer lose the source — `js/attribution.js` forwards inbound UTMs onto every app CTA for the rest of the session.
+- **Ordinary site-to-app launches** are tagged `utm_source=mathmagicfun` / `utm_medium=referral` / `utm_campaign=site-<page>` by the same script, so "web-app launches from the site" is measurable in Statsig.
+- **UTM convention (inbound campaigns):** `utm_source={reddit|facebook|pinterest|newsletter|substack}`, `utm_medium={organic|paid|email}`, `utm_campaign=parents-launch-2026q3`
+- **Report in Statsig:** segment the funnel by `acquisitionCampaign`/`acquisitionSource`; combine with each ad platform's billing dashboard for cost-per-signup / cost-per-activated-user. **Parent Hub opt-in rate = digest opt-ins ÷ activated accounts** (`onboarding_account_created`).
+- **Beta signups:** total count via Netlify Forms only — **no by-source reporting** (the form captures only email; adding source capture is a privacy-policy change that must start in the app repo).
+- **Site-side:** Google Search Console (impressions/clicks for grade + long-division + fraction queries); Netlify Analytics page views.
 - Weekly 15-minute review: funnel conversion by source, CPC on paid, top organic queries.
