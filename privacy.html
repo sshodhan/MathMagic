@@ -525,8 +525,8 @@
         <div class="container">
             <div class="hero-badge">🔒 Your Privacy Matters</div>
             <h1>Privacy Policy</h1>
-            <p>Last Updated: June 12, 2026</p>
-            <!-- policy-version: 2026-06-12.1 — must match docs/PRIVACY_POLICY_BASELINE.md in sshodhan/v0-math-app-for-kids; checked by its privacy-policy-drift workflow -->
+            <p>Last Updated: July 19, 2026</p>
+            <!-- policy-version: 2026-07-19.1 — must match docs/PRIVACY_POLICY_BASELINE.md in sshodhan/v0-math-app-for-kids; checked by its privacy-policy-drift workflow -->
         </div>
     </section>
 
@@ -565,7 +565,7 @@
                 <ul>
                     <li><strong>Usage Analytics:</strong> Events like sessions started, features used, and problems answered, linked to a random account ID (signed in) or a random anonymous ID stored on the device (not signed in). We use Statsig for this.</li>
                     <li><strong>Error and Performance Logs:</strong> Error messages, stack traces, and basic device details (browser/user agent, platform, screen size) so we can fix problems</li>
-                    <li><strong>Bug Reports:</strong> If you send a bug report from the app, it includes a screenshot, recent in-app activity logs, and device details</li>
+                    <li><strong>Bug Reports:</strong> If you send a bug report from the app, it includes a screenshot, recent in-app activity logs, device details, and what your child was working on (the question on screen, their answer, and the picture shown). After a report is sent, your child may be offered one or two optional follow-up questions ("Dot's" interview); their short answers are checked for personal details and scrubbed before being saved with the report</li>
                 </ul>
                 <p>We do not collect email addresses, phone numbers, photos (other than worksheet scans your child initiates), contacts, or precise location from children. We do not use advertising identifiers or tracking cookies.</p>
 
@@ -583,7 +583,7 @@
                 <p>The AI Math Coach is powered by third-party AI providers. To generate a hint, explanation, practice question, or visual, our server sends the relevant context to the provider:</p>
                 <ul>
                     <li><strong>OpenAI</strong> (coaching replies, practice-question suggestions, and worksheet feedback): receives the math question, your child's answer, the attempt number, the concept being practiced, the coach conversation for the current question, and — when personalization is active — aggregate learning signals such as the mastery estimate and recurring error patterns. For worksheet feedback, the worksheet photo is sent for analysis. OpenAI Privacy Policy: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">openai.com/policies/privacy-policy</a></li>
-                    <li><strong>Anthropic</strong> (visual explanations): receives the math question, your child's answer, and the concept, to generate a visual walkthrough. Anthropic Privacy Policy: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a></li>
+                    <li><strong>Anthropic</strong> (visual explanations, and the optional bug-report follow-up): receives the math question, your child's answer, and the concept, to generate a visual walkthrough. If your child chooses to answer the optional follow-up question after sending a bug report, Anthropic also receives the question that was on screen, a description of the picture shown, and your child's scrubbed answer about what went wrong — used only to pick one follow-up question. Anthropic Privacy Policy: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a></li>
                 </ul>
                 <ul>
                     <li>We never send your child's name, username, email, or account ID to AI providers.</li>
