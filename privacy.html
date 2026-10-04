@@ -525,8 +525,8 @@
         <div class="container">
             <div class="hero-badge">🔒 Your Privacy Matters</div>
             <h1>Privacy Policy</h1>
-            <p>Last Updated: July 19, 2026</p>
-            <!-- policy-version: 2026-07-19.1 — must match docs/PRIVACY_POLICY_BASELINE.md in sshodhan/v0-math-app-for-kids; checked by its privacy-policy-drift workflow -->
+            <p>Last Updated: October 4, 2026</p>
+            <!-- policy-version: 2026-10-04.1 — must match docs/PRIVACY_POLICY_BASELINE.md in sshodhan/v0-math-app-for-kids; checked by its privacy-policy-drift workflow -->
         </div>
     </section>
 
@@ -539,7 +539,7 @@
                 <p>Welcome to Math Magic, operated by AuraAgents LLC ("we," "our," or "us"). This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use the Math Magic Android app, the Math Magic web app, or this website mathmagicfun.info, including its beta signup form (together, the "Services").</p>
                 <p>Please read this Privacy Policy carefully. By using the Services, you agree to the collection and use of information in accordance with this policy.</p>
                 <div class="highlight-box">
-                    <p><strong>The short version:</strong> we collect only what learning needs — practice activity and the signals that help the coach personalize. No ads, no ad tracking, and your data is never sold. Kids can use the app without an account, and parent emails are used only for the progress digest you opt into.</p>
+                    <p><strong>The short version:</strong> we collect only what learning needs — practice activity and the signals that help the coach personalize. No ads, no ad tracking, and your data is never sold. Kids can use the app without an account, and parent emails are used only to confirm your permission and for the progress digest you opt into.</p>
                 </div>
 
                 <h2>Information We Collect</h2>
@@ -557,6 +557,7 @@
                 <h3>Information Parents Provide</h3>
                 <ul>
                     <li><strong>Parent Setup:</strong> If you set up the Parent Hub, we collect your first name, your relationship to the learner, and your contact preference. This is saved on your device and synced to our backend so it can power the weekly digest.</li>
+                    <li><strong>Parent Permission:</strong> When a child creates an account, we first ask a parent or guardian for permission: your email address and your agreement. We store your email, the time you agreed, and which version of the permission wording you saw. Giving permission does not sign you up for the weekly digest.</li>
                     <li><strong>Email Address:</strong> If you subscribe to the weekly progress digest, we store your email address with your child's account (see "Parent Emails &amp; Weekly Digest" below).</li>
                     <li><strong>Beta Signup:</strong> If you join the beta through this website, the email you submit is processed by Netlify (our website host) and used only to contact you about beta access.</li>
                 </ul>
@@ -573,7 +574,7 @@
                 <ul>
                     <li><strong>Provide and Maintain the App:</strong> Deliver the core math learning experience and sync progress for accounts</li>
                     <li><strong>Personalize the Coach:</strong> Use the personalization signals above (mastery estimates, error patterns, help usage, preferred learning style) to adapt hints, explanations, and question difficulty</li>
-                    <li><strong>Parent Updates:</strong> Send the weekly progress digest you opt into, and show progress in the Parent Hub</li>
+                    <li><strong>Parent Updates:</strong> Confirm your permission by email, send the weekly progress digest you opt into, and show progress in the Parent Hub</li>
                     <li><strong>Improve the App:</strong> Analyze usage patterns to enhance features and performance</li>
                     <li><strong>Technical Support:</strong> Diagnose and fix technical issues</li>
                 </ul>
@@ -593,10 +594,11 @@
 
                 <h2>Parent Emails &amp; Weekly Digest</h2>
                 <ul>
+                    <li><strong>Permission Confirmation:</strong> When you give permission for your child's account, we send you one email confirming it. It includes a link you can use at any time to withdraw your permission (see "Data Retention and Deletion" below).</li>
                     <li><strong>Double Opt-In:</strong> When you enter your email, we send one confirmation message. You receive nothing further until you click the confirmation link.</li>
                     <li><strong>What's in the Digest:</strong> A Monday email with your child's first name, problems solved, stars earned, the adventures practiced that week, and a link to a fuller progress report page.</li>
                     <li><strong>Unsubscribe Anytime:</strong> Every email includes a one-click unsubscribe link — no sign-in needed.</li>
-                    <li><strong>Delivery:</strong> Digest and confirmation emails are delivered through Resend, our email service provider.</li>
+                    <li><strong>Delivery:</strong> Permission, digest and confirmation emails are delivered through Resend, our email service provider.</li>
                 </ul>
 
                 <h2>Sharing Features</h2>
@@ -620,7 +622,7 @@
                     <li><strong>Supabase</strong> — backend database and file storage (learning progress, accounts, avatars, shared whiteboards, parent profiles). <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
                     <li><strong>OpenAI</strong> — AI coaching responses, practice-question suggestions, and worksheet analysis. <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
                     <li><strong>Anthropic</strong> — AI visual explanations. <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
-                    <li><strong>Resend</strong> — delivery of parent confirmation and weekly digest emails. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Resend</strong> — delivery of parent permission, confirmation and weekly digest emails. <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
                     <li><strong>Statsig</strong> — usage analytics and feature flags. <a href="https://www.statsig.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
                     <li><strong>Vercel</strong> — hosting for the web app and server logs. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
                     <li><strong>Netlify</strong> — hosting for this website and the beta signup form. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
@@ -642,6 +644,7 @@
                     <li>From children we collect only: a first name or nickname, a username, learning progress, coach interactions and derived personalization signals, avatar choices, and creations they choose to save or share (whiteboard drawings, worksheet scans)</li>
                     <li>We do not collect email addresses, phone numbers, or precise location from children, and we do not knowingly collect more personal information than is reasonably necessary for the learning experience</li>
                     <li>Children can use the app without an account, in which case progress stays on the device</li>
+                    <li>Before a child's account is created, we ask a parent or guardian for permission by email, and we confirm it with one email that includes a link to withdraw it</li>
                     <li>Parents/guardians can review, delete, or refuse further collection of their child's information at any time by contacting us at <a href="mailto:support@mathmagicfun.com">support@mathmagicfun.com</a></li>
                 </ul>
 
@@ -649,6 +652,7 @@
                 <ul>
                     <li><strong>Learning data</strong> is kept for as long as the account is active, so your child can pick up where they left off.</li>
                     <li><strong>Reset in app:</strong> The in-app "reset progress" option deletes adventure progress, puzzle completions, and theme unlocks from our servers for that account.</li>
+                    <li><strong>Withdrawing permission:</strong> The link in the permission email lets you withdraw your permission in one tap, at any time. This deletes your email address and parent profile, and your child's account data on our servers: progress, coach learning events, avatars and shared whiteboards. We keep only a minimal record that permission was given and later withdrawn (the account ID, the dates, and the permission wording version), with no names or email address. Deletion through the link is automatic and done on a best-effort basis: if any step fails, the page tells you so and you can tap again, or email us at <a href="mailto:support@mathmagicfun.com">support@mathmagicfun.com</a> and we will complete the deletion within 30 days. Logs and bug reports are not covered by the link; email us to have those removed.</li>
                     <li><strong>Full deletion:</strong> To delete an account and all associated data — including progress, coach learning events, shared whiteboards, and parent profile information — email us at <a href="mailto:support@mathmagicfun.com">support@mathmagicfun.com</a>. We complete verified deletion requests within 30 days.</li>
                     <li><strong>Digest emails:</strong> Unsubscribing stops all digest emails immediately; you can also ask us to remove your email address entirely.</li>
                     <li><strong>Logs and bug reports</strong> are kept only as long as needed for debugging and stability work.</li>

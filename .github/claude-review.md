@@ -53,4 +53,4 @@ from this repo's `main` weekly and on app PRs, and fails if version stamps diver
 - Netlify auto-deploys. Verify https://mathmagicfun.info/privacy.html renders the change.
 - If this was a version bump, tell the app-repo side it can re-run its
   "Privacy Policy Drift Check" workflow (or merge the waiting PR) — it should go green.
-- Current synced version: `2026-06-12.1` (update this line whenever the stamp changes).
+- Current synced version: `2026-10-04.1` (update this line whenever the stamp changes).
