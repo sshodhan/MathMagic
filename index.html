@@ -431,6 +431,8 @@
             color: var(--ink);
             text-decoration: underline;
             text-underline-offset: 3px;
+            /* Inline vertical padding grows the tap area (~44px) without moving the line. */
+            padding: 12px 2px;
         }
 
         .hero-social-proof {
@@ -1295,6 +1297,7 @@
         .store-text strong { font-family: 'Baloo 2', cursive; font-size: 1.2rem; }
         .store-badge-link-primary { background: var(--orange); border-color: var(--orange); }
         .store-badge-link-primary:hover { background: var(--orange); filter: brightness(1.08); }
+        .store-badge-link-primary .store-text small { opacity: 1; }
         .download-steps-label { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
         /* ---------- FOOTER ---------- */
@@ -1406,7 +1409,7 @@
                 <li><a href="#story">Our Story</a></li>
                 <li><a href="/blog/">Blog</a></li>
                 <li><a href="privacy.html">Privacy</a></li>
-                <li><a href="beta.html" class="btn btn-secondary nav-cta" style="margin-right: 8px;">Join Beta</a></li>
+                <li><a href="beta.html" class="btn btn-secondary nav-cta" style="margin-right: 8px;">Android Beta</a></li>
                 <li><a href="https://sshodhan.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">Try Free</a></li>
             </ul>
             <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')">
@@ -1424,7 +1427,7 @@
         <a href="#story" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Story</a>
         <a href="/blog/">Blog</a>
         <a href="privacy.html">Privacy</a>
-        <a href="beta.html" class="btn btn-secondary">Join Beta</a>
+        <a href="beta.html" class="btn btn-secondary">Android Beta</a>
         <a href="https://sshodhan.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Try Free</a>
     </div>
 
@@ -1611,8 +1614,8 @@
         <div class="container">
             <div class="beta-inner">
                 <div class="beta-icon reveal" aria-hidden="true">🧪</div>
-                <h2 class="section-title reveal reveal-delay-1" id="beta-title">Join the Beta</h2>
-                <p class="beta-desc reveal reveal-delay-2">Be among the first to try Math Magic! Send us your Gmail address and we'll add you to our Android tester list.</p>
+                <h2 class="section-title reveal reveal-delay-1" id="beta-title">Join the Android Beta</h2>
+                <p class="beta-desc reveal reveal-delay-2">Be among the first to try the Math Magic Android app! Send us your Gmail address and we'll add you to our Android tester list.</p>
                 
                 <div class="reveal reveal-delay-3">
                     <form name="beta-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="beta-form" id="betaForm">
