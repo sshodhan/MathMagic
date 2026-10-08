@@ -29,7 +29,9 @@ from this repo's `main` weekly and on app PRs, and fails if version stamps diver
   - unqualified "never shared"
 - Approved claim vocabulary: "Learning Data Only"; "We collect only what learning needs";
   "Never sold, never used for ads, never shared with advertisers"; "No ads"; "No in-app
-  purchases"; "COPPA-committed".
+  purchases"; "COPPA-committed"; "Stars are earned, never bought" (product claim: the app
+  has no payment or billing code — stars come only from solving problems and are spent in
+  the Bazaar; recheck if the app ever adds purchases).
 - Adding a NEW claim requires checking it against the policy first; if the policy must
   change to support it, that change starts in the app repo (see §1).
 

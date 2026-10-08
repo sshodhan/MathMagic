@@ -1006,12 +1006,20 @@
         .roadmap-header { text-align: center; margin-bottom: 50px; }
         .roadmap-header .section-label { color: var(--orange); }
 
+        /* Flex (not grid) so a short last row is centred: 5 items read 3 + 2. */
         .roadmap-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            --roadmap-cols: 3;
+            --roadmap-gap: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--roadmap-gap);
             max-width: 780px;
             margin: 0 auto;
+        }
+
+        .roadmap-grid > .roadmap-item {
+            flex: 0 0 calc((100% - (var(--roadmap-cols) - 1) * var(--roadmap-gap)) / var(--roadmap-cols));
         }
 
         .roadmap-item {
@@ -1352,7 +1360,7 @@
             .parents-hub-grid { grid-template-columns: 1fr; gap: 48px; }
             .parents-hub-visual { order: -1; }
             .topics-grid { grid-template-columns: 1fr; }
-            .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+            .roadmap-grid { --roadmap-cols: 2; }
         }
 
         @media (max-width: 640px) {
@@ -1383,7 +1391,7 @@
             .screenshots-scroll { gap: 16px; }
             .screenshot-frame { width: 140px; height: 280px; }
             .hero-mascot { right: -20px; bottom: 40px; width: 100px; height: 100px; }
-            .roadmap-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .roadmap-grid { --roadmap-cols: 2; --roadmap-gap: 14px; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
             .beta-features { flex-direction: column; align-items: center; gap: 14px; }
@@ -1538,7 +1546,7 @@
             <div class="trust-badges parents-trust-strip reveal reveal-delay-4">
                 <span class="trust-badge">🚫 No Ads</span>
                 <span class="trust-badge">🔒 Learning Data Only</span>
-                <span class="trust-badge">💳 No In-App Purchases</span>
+                <span class="trust-badge">⭐ Stars are earned, never bought</span>
                 <span class="trust-badge">🔗 No External Links</span>
                 <span class="trust-badge">✅ Parent-confirmed emails</span>
             </div>
@@ -1600,11 +1608,10 @@
             </div>
             <div class="roadmap-grid">
                 <div class="roadmap-item reveal"><div class="roadmap-emoji" aria-hidden="true">✖️</div><p>Multiplication</p></div>
-                <div class="roadmap-item reveal reveal-delay-1"><div class="roadmap-emoji" aria-hidden="true">🍕</div><p>Fractions</p></div>
-                <div class="roadmap-item reveal reveal-delay-2"><div class="roadmap-emoji" aria-hidden="true">👧👦</div><p>Multi-Child View</p></div>
-                <div class="roadmap-item reveal reveal-delay-3"><div class="roadmap-emoji" aria-hidden="true">🏅</div><p>Badges</p></div>
-                <div class="roadmap-item reveal reveal-delay-4"><div class="roadmap-emoji" aria-hidden="true">📴</div><p>Offline Mode</p></div>
-                <div class="roadmap-item reveal reveal-delay-5"><div class="roadmap-emoji" aria-hidden="true">🎨</div><p>More Art Styles</p></div>
+                <div class="roadmap-item reveal reveal-delay-1"><div class="roadmap-emoji" aria-hidden="true">👧👦</div><p>Multi-Child View</p></div>
+                <div class="roadmap-item reveal reveal-delay-2"><div class="roadmap-emoji" aria-hidden="true">🏅</div><p>Badges</p></div>
+                <div class="roadmap-item reveal reveal-delay-3"><div class="roadmap-emoji" aria-hidden="true">📴</div><p>Offline Mode</p></div>
+                <div class="roadmap-item reveal reveal-delay-4"><div class="roadmap-emoji" aria-hidden="true">🎨</div><p>More Art Styles</p></div>
             </div>
         </div>
     </section>
