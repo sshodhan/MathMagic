@@ -29,7 +29,7 @@
       "url": "https://mathmagicfun.info",
       "description": "Math Magic makes learning math fun! Interactive games with an AI math coach, visual learning tools, and a safe environment designed for kids in grades 3-5, ages 8-12.",
       "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Android",
+      "operatingSystem": "Web browser, Android",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -418,6 +418,21 @@
             display: flex;
             gap: 14px;
             flex-wrap: wrap;
+        }
+
+        .hero-android-note {
+            margin-top: 14px;
+            font-size: 0.88rem;
+            color: var(--ink-muted);
+            font-weight: 600;
+        }
+
+        .hero-android-note a {
+            color: var(--ink);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            /* Inline vertical padding grows the tap area (~44px) without moving the line. */
+            padding: 12px 2px;
         }
 
         .hero-social-proof {
@@ -1280,6 +1295,10 @@
         .store-text { text-align: left; }
         .store-text small { font-size: 0.7rem; opacity: 0.7; display: block; font-weight: 600; }
         .store-text strong { font-family: 'Baloo 2', cursive; font-size: 1.2rem; }
+        .store-badge-link-primary { background: var(--orange); border-color: var(--orange); }
+        .store-badge-link-primary:hover { background: var(--orange); filter: brightness(1.08); }
+        .store-badge-link-primary .store-text small { opacity: 1; }
+        .download-steps-label { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
         /* ---------- FOOTER ---------- */
         .footer { background: #0D0B14; color: white; padding: 48px 0 36px; }
@@ -1390,7 +1409,7 @@
                 <li><a href="#story">Our Story</a></li>
                 <li><a href="/blog/">Blog</a></li>
                 <li><a href="privacy.html">Privacy</a></li>
-                <li><a href="beta.html" class="btn btn-secondary nav-cta" style="margin-right: 8px;">Join Beta</a></li>
+                <li><a href="beta.html" class="btn btn-secondary nav-cta" style="margin-right: 8px;">Android Beta</a></li>
                 <li><a href="https://sshodhan.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">Try Free</a></li>
             </ul>
             <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')">
@@ -1408,7 +1427,7 @@
         <a href="#story" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Story</a>
         <a href="/blog/">Blog</a>
         <a href="privacy.html">Privacy</a>
-        <a href="beta.html" class="btn btn-secondary">Join Beta</a>
+        <a href="beta.html" class="btn btn-secondary">Android Beta</a>
         <a href="https://sshodhan.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Try Free</a>
     </div>
 
@@ -1421,7 +1440,7 @@
         <div class="container hero-grid">
             <div class="hero-content">
                 <div class="hero-badge reveal">
-                    <span class="hero-badge-dot" aria-hidden="true"></span> Now in Beta — Android
+                    <span class="hero-badge-dot" aria-hidden="true"></span> Learn free today in your browser — no download needed
                 </div>
                 <h1 class="hero-title reveal reveal-delay-1" id="hero-title">
                     Math becomes <span class="accent">magic</span> when kids can see it
@@ -1429,10 +1448,10 @@
                 <p class="hero-desc reveal reveal-delay-2">Interactive games, an AI math coach, and visual learning tools that turn math practice into a real adventure.</p>
                 <div class="hero-buttons reveal reveal-delay-3">
                     <a href="https://sshodhan.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        <span class="btn-icon" aria-hidden="true">🚀</span> Try Free Today
+                        <span class="btn-icon" aria-hidden="true">🚀</span> Try Free in Your Browser
                     </a>
-                    <a href="beta.html" class="btn btn-secondary">Join Beta</a>
                 </div>
+                <p class="hero-android-note reveal reveal-delay-3">Have an Android phone? <a href="beta.html">Join the Android beta →</a></p>
                 <div class="hero-social-proof reveal reveal-delay-4">
                     <div class="hero-avatars" aria-hidden="true">
                         <div class="hero-avatar">👧</div><div class="hero-avatar">👦</div>
@@ -1595,8 +1614,8 @@
         <div class="container">
             <div class="beta-inner">
                 <div class="beta-icon reveal" aria-hidden="true">🧪</div>
-                <h2 class="section-title reveal reveal-delay-1" id="beta-title">Join the Beta</h2>
-                <p class="beta-desc reveal reveal-delay-2">Be among the first to try Math Magic! Send us your Gmail address and we'll add you to our Android tester list.</p>
+                <h2 class="section-title reveal reveal-delay-1" id="beta-title">Join the Android Beta</h2>
+                <p class="beta-desc reveal reveal-delay-2">Be among the first to try the Math Magic Android app! Send us your Gmail address and we'll add you to our Android tester list.</p>
                 
                 <div class="reveal reveal-delay-3">
                     <form name="beta-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="beta-form" id="betaForm">
@@ -1664,7 +1683,14 @@
     <section class="download section" id="download" aria-labelledby="download-title">
         <div class="container">
             <h2 class="section-title reveal" id="download-title">Get Math Magic</h2>
-            <p class="download-sub reveal reveal-delay-1">Currently in beta for Android. Request access above to get started!</p>
+            <p class="download-sub reveal reveal-delay-1">Play free in your browser today — no download needed. The Android app is in beta: request access above.</p>
+            <div class="reveal reveal-delay-1" style="margin-bottom: 36px;">
+                <a href="https://sshodhan.vercel.app/" target="_blank" rel="noopener noreferrer" class="store-badge-link store-badge-link-primary" aria-label="Play Math Magic free in your browser">
+                    <span class="store-icon" aria-hidden="true">🌐</span>
+                    <div class="store-text"><small>PLAY FREE IN YOUR</small><strong>Browser</strong></div>
+                </a>
+            </div>
+            <p class="download-steps-label reveal reveal-delay-2">Android beta</p>
             <div class="reveal reveal-delay-2 download-steps">
                 <div class="download-step">
                     <span class="download-step-num">1</span>
